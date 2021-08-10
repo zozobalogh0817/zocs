@@ -1,0 +1,68 @@
+<h1>This resource has been archived, or just moved to another location</h1>
+<p>
+    <!-- [site.settings.home] Home page of the site can be set in project's (_data/settings.yml) -->
+    Please <a href="{{ site.settings.home }}">go to home page</a> or contact with the owner
+</p>
+
+<!-- [site.settings.contactUs] All contact us variable can be set in project's (_data/settings.yml) -->
+<h2>Contact us</h2>
+<div>
+    {% if site.settings.contactUs.ownerName %}
+    <p>{{site.settings.contactUs.ownerName}}</p>
+    {% endif %}
+
+    {% if site.settings.contactUs.ownerEmail %}
+    <p>{{site.settings.contactUs.ownerEmail}}</p>
+    {% endif %}
+
+    {% if site.settings.contactUs.supportEmail %}
+    <p>{{site.settings.contactUs.supportEmail}}</p>
+    {% endif %}
+</div>
+
+<!-- [site.settings.redirectTimeOut] -> this variable can be set in project's (_data/settings.yml) -->
+You will be redirected automatically after <b id="timeRemaining">{{ site.settings.redirectTimeOut }}</b> seconds
+
+<script>
+    (function () {
+        let nativeSetTimeout = window.setTimeout;
+
+        window.bindTimeout = function (listener, interval) {
+            function setTimeout(code, delay) {
+                let elapsed = 0,
+                    winInterval;
+
+                winInterval = window.setInterval(function () {
+                    elapsed += interval;
+                    if (elapsed < delay) {
+                        listener(delay - elapsed);
+                    } else {
+                        window.clearInterval(winInterval);
+                    }
+                }, interval);
+                return nativeSetTimeout(code, delay);
+            }
+
+            window.setTimeout = setTimeout;
+            setTimeout._native = nativeSetTimeout;
+        };
+    }());
+
+    // In the meantime this method is executing in this case (per sec) (1sec/execution)
+    window.bindTimeout((timeLeap) => {
+        // Get element by id
+        let element = document.getElementById("timeRemaining");
+        // Set to the elapsed time
+        element.innerText = (timeLeap / 1000);
+    }, 1000);
+
+    // After time is done this function is called
+    window.setTimeout(() => {
+            // Redirect the user
+            window.location.href = "{{ site.path }}{{ site.settings.home }}";
+        },
+        // Set the timeout to redirect time based on the site settings
+        // 000 added because the value given in [sec] and timeout method requires [ms]
+        "{{ site.settings.redirectTimeOut }}000");
+
+</script>
