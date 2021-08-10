@@ -18,17 +18,12 @@ body {
 //////////////
 // Links
 
-a {
+a, a:hover, a:focus {
   color: $link-color;
-  text-decoration: none;
+  text-decoration: none !important;
 
   strong {
     color: inherit;
-  }
-
-  &:hover,
-  &:focus {
-    text-decoration: underline;
   }
 }
 
@@ -180,21 +175,54 @@ table {
   margin-right: auto;
 }
 
+.inner-container {
+  padding: 2rem 2.5rem;
+}
+
+.page h1, h2, h3, h4, h5, h6 {
+  margin-top: -2.6rem !important;
+  padding-top: 3.6rem !important;
+}
+
 /*
   Responsive columns layout
 */
+
+.icon {
+  .outbound {
+    color: #aaa;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    top: -2px;
+  }
+}
+
+.page-edit {
+  color: #4e6e8e;
+
+  .edit-link {
+    text-decoration: none;
+    display: inline-block;
+  }
+}
 
 ///////////////////////////////////////////////////
 //  Masthead
 
 .masthead {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  margin-bottom: 3rem;
+  border-bottom: 1px solid #eaecef;
+  background-color: #fff;
+  line-height: 2.2rem;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
 
   .masthead-title {
     margin-top: 0;
     margin-bottom: 0;
+    padding-left: 1rem;
     color: $masthead-color;
 
     a {

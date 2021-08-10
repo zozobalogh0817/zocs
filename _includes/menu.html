@@ -1,38 +1,26 @@
-<div class="sidenav">
-    {% if site.settings.hasHeader %}
-    <header class="masthead">
-        <b class="masthead-title {{ site.settings.headerType }}-{{ site.settings.headerSize }}}">
-            <a href="{{ site.path }}{{ site.settings.home }}">{{ site.title }}</a>
-        </b>
-    </header>
-    {% endif %}
+<nav class="menuLinks">
     {% for page in site.pages %}
     {% if page.options.menuItem %}
-    <div>
+    <div class="menu-item">
         <a href="{{ site.path }}{{ page.url }}">{{ page.title }}</a>
     </div>
     {% endif %}
     {% endfor %}
-</div>
+</nav>
 
 <style>
-    .sidenav {
-        height: 100%;
-        z-index: 1;
-        background-color: rgb(255, 255, 255);
-        overflow-x: hidden;
-        padding-top: 20px;
+    .menu-item {
+        margin-left: 1.5rem;
     }
 
-    .sidenav a {
-        padding: 6px 8px 6px 16px;
-        text-decoration: none;
-        font-size: 22px;
-        color: rgba(3, 3, 3, 0.99);
-        display: block;
-    }
-
-    .sidenav a:hover {
-        color: rgb(62, 62, 62);
+    .menuLinks {
+        padding-left: 1.5rem;
+        box-sizing: border-box;
+        white-space: nowrap;
+        font-size: .9rem;
+        position: absolute;
+        right: 1.5rem;
+        top: 0;
+        display: flex;
     }
 </style>
