@@ -1,4 +1,14 @@
-import {Versions} from "./Versions";
+class Versions {
+    versions: Array<Version>
+}
+
+class Version {
+    latest: boolean
+    version: string
+    updatePatchUrl: string
+    updaterUrl: string
+    changeLog: Array<string>
+}
 
 export class Core {
     GetMechanic() {
