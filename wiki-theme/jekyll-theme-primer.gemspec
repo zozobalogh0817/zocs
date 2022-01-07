@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 Gem::Specification.new do |s|
-  s.name          = "wiki-theme"
-  s.version       = "0.0.1"
-  s.authors       = ["Balogh Zoltán Sándor"]
-  s.email         = ["zoltan.balogh@avolantis.net"]
-  s.homepage      = "https://github.com/zozobalogh0817/wiki-theme"
-  s.summary       = "Wiki theme for GitHub pages based on Primer Theme"
+  s.name          = "jekyll-theme-primer"
+  s.version       = "0.6.0"
+  s.authors       = ["GitHub, Inc."]
+  s.email         = ["open-source@github.com"]
+  s.homepage      = "https://github.com/pages-themes/jekyll-theme-primer"
+  s.summary       = "Primer is a Jekyll theme for GitHub Pages based on GitHub's Primer styles"
 
   s.files         = `git ls-files -z`.split("\x0").select do |f|
     f.match(%r{^(assets|_(includes|layouts|sass)/|(LICENSE|README)((\.(txt|md)|$)))}i)
