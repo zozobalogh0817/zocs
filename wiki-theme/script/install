@@ -21,7 +21,7 @@ content='
 @import "primer-markdown/index.scss";
 @import "rouge";
 '
-echo "$content" >> _sass/wiki-theme.scss
+echo "$content" >> _sass/jekyll-theme-primer.scss
 
 # Create rouge stylesheet
 rougify style github > _sass/rouge.scss
