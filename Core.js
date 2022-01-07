@@ -3,7 +3,7 @@ class Version {
     version: string
     updatePatchUrl: string
     updaterUrl: string
-    changeLog: Array<string>
+    changeLog: string[]
 }
 
 class Versions {
