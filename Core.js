@@ -7,7 +7,7 @@ class Version {
 }
 
 class Versions {
-    versions: Array<Version>
+    versions: Version[]
 }
 
 export class Core {
