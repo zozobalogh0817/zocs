@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Gem::Specification.new do |s|
-  s.name          = "jekyll-theme-primer"
+  s.name          = "wiki-theme"
   s.version       = "0.6.0"
   s.authors       = ["GitHub, Inc."]
   s.email         = ["open-source@github.com"]
