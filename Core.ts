@@ -1,13 +1,13 @@
-class Versions {
-    versions: Array<Version>
-}
-
 class Version {
     latest: boolean
     version: string
     updatePatchUrl: string
     updaterUrl: string
     changeLog: Array<string>
+}
+
+class Versions {
+    versions: Array<Version>
 }
 
 export class Core {
@@ -18,7 +18,7 @@ export class Core {
             .then(value => value.json())
             .then(json => versions = json)
 
-        let sortedList = versions.versions.sort(version => version.version)
+        let sortedList = versions.versions.map(version => version.version)
         console.log(sortedList);
     }
 }
