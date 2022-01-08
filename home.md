@@ -3,6 +3,7 @@ layout: page
 title: Home
 toc: true
 menu: true
+hasHeader: true
 ---
 
 This application was made to make other person's life much much easier.

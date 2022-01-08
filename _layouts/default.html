@@ -6,15 +6,19 @@
     <link rel="stylesheet" type="text/css" href="{{ site.path }}/css/style.css">
 </head>
 {% if page.excludeRender %}
+<h1>This page is exist but excluded from render.</h1>
+<a href="{{page.data.settings.home}}">Go to home page</a>
 {% else %}
 <body>
 
 <div class="container">
+    {% if page.hasHeader %}
     <header class="masthead">
         <h3 class="masthead-title">
             <a href="{{ site.path }}">{{ site.title }}</a>
         </h3>
     </header>
+    {% endif %}
 
     <div class="sidenav">
         {% for page in site.pages %}
