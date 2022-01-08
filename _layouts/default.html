@@ -62,21 +62,6 @@
 </body>
 {% endif %}
 <style>
-    .container {
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-    }
-
-    @media (min-width: 768px) {
-        .container {
-            display: grid;
-            grid-template-columns: 200px 1fr 200px;
-            grid-template-rows: auto 1fr auto;
-
-        }
-    }
-
     .sidenav {
         height: 100%;
         width: 300px;
@@ -128,12 +113,6 @@
 
     .toc_content_sidenav ul {
         list-style-type: none;
-    }
-
-    #content {
-        margin-left: 160px; /* Same as the width of the sidenav */
-        font-size: 28px; /* Increased text to enable scrolling */
-        padding: 0 10px;
     }
 
     @media screen and (max-height: 450px) {
