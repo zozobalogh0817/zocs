@@ -37,28 +37,24 @@
     {% endif %}
 
     <div class="content" itemprop="text">
-        <section class="column">
-            <aside class="sidenav">
-                {% for page in site.pages %}
-                {% if page.options.menuItem %}
-                <div>
-                    <a href="{{ site.path }}{{ page.url }}">{{ page.title }}</a>
-                </div>
-                {% endif %}
-                {% endfor %}
-            </aside>
-        </section>
+        <div class="sidenav">
+            {% for page in site.pages %}
+            {% if page.options.menuItem %}
+            <div>
+                <a href="{{ site.path }}{{ page.url }}">{{ page.title }}</a>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
 
-        <section class="column">
+        <div class="column">
             {{ content }}
-        </section>
+        </div>
 
         {% if page.options.toc %}
-        <section class="column">
-            <aside class="toc_content_sidenav">
-                {% include toc.html html=content %}
-            </aside>
-        </section>
+        <div class="toc_content_sidenav">
+            {% include toc.html html=content %}
+        </div>
         {% endif %}
 
     </div>
@@ -66,18 +62,23 @@
 </body>
 {% endif %}
 <style>
-    .content{
+    .content {
         margin: 0 auto;
         max-width: 1200px;
         display: grid;
         grid-gap: 1rem;
     }
+
     @media (min-width: 600px) {
-        .content { grid-template-columns: repeat(2, 1fr); }
+        .content {
+            grid-template-columns: repeat(2, 1fr);
+        }
     }
 
     @media (min-width: 900px) {
-        .content { grid-template-columns: repeat(3, 1fr); }
+        .content {
+            grid-template-columns: repeat(3, 1fr);
+        }
     }
 
     .sidenav {
