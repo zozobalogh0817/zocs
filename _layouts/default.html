@@ -36,23 +36,27 @@
     </header>
     {% endif %}
 
-    <aside class="sidenav">
-        {% for page in site.pages %}
-        {% if page.options.menuItem %}
-        <div>
-            <a href="{{ site.path }}{{ page.url }}">{{ page.title }}</a>
-        </div>
-        {% endif %}
-        {% endfor %}
-    </aside>
-
     <section class="page__content e-content" itemprop="text">
+        <aside class="sidenav">
+            {% for page in site.pages %}
+            {% if page.options.menuItem %}
+            <div>
+                <a href="{{ site.path }}{{ page.url }}">{{ page.title }}</a>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </aside>
+
+        <section>
+            {{ content }}
+        </section>
+
         {% if page.options.toc %}
         <aside class="toc_content_sidenav">
             {% include toc.html html=content %}
         </aside>
         {% endif %}
-        {{ content }}
+
     </section>
 </div>
 </body>
