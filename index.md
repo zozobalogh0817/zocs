@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Index
+excludeRender: true
 ---
 <h1>Welcome page</h1>
 

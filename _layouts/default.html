@@ -5,6 +5,8 @@
     <title>{{ page.title }} - {{ site.title }}</title>
     <link rel="stylesheet" type="text/css" href="{{ site.path }}/css/style.css">
 </head>
+{% if page.excludeRender %}
+{% else %}
 <body>
 
 <div class="container">
@@ -35,6 +37,7 @@
     </section>
 </div>
 </body>
+{% endif %}
 <style>
     .sidenav {
         height: 100%;
