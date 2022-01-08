@@ -1,4 +1,11 @@
-# Home page of the site
+# Basic section
 home: "/home"
-# An email address or
+# END #
+
+# Header section
+hasHeader: true
+# END #
+
+# Contact section
 contactUs: { ownerName: "Balogh Zoltán Sándor",supportEmail: "zoltan.balogh@avolantis.net" }
+# END #
