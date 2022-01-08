@@ -2,9 +2,38 @@
 layout: default
 title: "Index Page"
 ---
+<h1>Welcome page</h1>
+
+
+<p>
+    Topics :
+</p>
 
 {% for topic in site.topics %}
 <div>
-    {{ topic.title }}
+    <a href="{{ site.path }}{{ topic.url }}">{{ topic.title }}</a>
 </div>
+
+{% endfor %}
+
+<p>
+    Posts :
+</p>
+
+{% for post in site.posts %}
+<div>
+    <a href="{{ site.path }}{{ post.url }}">{{ post.title }}</a>
+</div>
+
+{% endfor %}
+
+<p>
+    Pages :
+</p>
+
+{% for page in site.pages %}
+<div>
+    <a href="{{ site.path }}{{ page.url }}">{{ page.title }}</a>
+</div>
+
 {% endfor %}

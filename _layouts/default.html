@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <title>{{ page.title }} - {{ site.title }}</title>
     <link rel="stylesheet" type="text/css" href="{{ site.path }}/css/style.css">
-    <link rel="alternate" type="application/atom+xml" href="{{ site.path }}/feed.xml" title="News Feed">
 </head>
 <body>
 
@@ -16,10 +15,10 @@
     </header>
 
     <div class="sidenav">
-        {% for topic in site.topics %}
+        {% for page in site.pages %}
 
         <div>
-            <a href="{{ site.path }}{{ topic.url }}">{{ topic.title }}</a>
+            <a href="{{ site.path }}{{ page.url }}">{{ page.title }}</a>
         </div>
 
         {% endfor %}
