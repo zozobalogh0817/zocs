@@ -3,6 +3,11 @@
 <head>
     <meta charset="utf-8">
     <title>{{ page.title }} - {{ site.title }}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="{{ site.path }}/css/style.css">
 </head>
 {% if page.options.archived %}
@@ -25,7 +30,7 @@
     {% endif %}
 </div>
 {% else %}
-<body class="container">
+<body>
 {% if page.options.hasHeader %}
 <header class="masthead">
     <h3 class="masthead-title">
@@ -34,26 +39,28 @@
 </header>
 {% endif %}
 
-<div class="wrapper">
-    <div class="sidenav">
-        {% for page in site.pages %}
-        {% if page.options.menuItem %}
-        <div>
-            <a href="{{ site.path }}{{ page.url }}">{{ page.title }}</a>
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            {% for page in site.pages %}
+            {% if page.options.menuItem %}
+            <div>
+                <a href="{{ site.path }}{{ page.url }}">{{ page.title }}</a>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+
+        <div class="col-sm">
+            {{ content }}
+        </div>
+
+        {% if page.options.toc %}
+        <div class="col-sm">
+            {% include toc.html html=content %}
         </div>
         {% endif %}
-        {% endfor %}
     </div>
-
-    <div class="column">
-        {{ content }}
-    </div>
-
-    {% if page.options.toc %}
-    <div class="toc_content_sidenav">
-        {% include toc.html html=content %}
-    </div>
-    {% endif %}
 </div>
 </body>
 {% endif %}
