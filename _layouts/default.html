@@ -66,12 +66,16 @@
 </body>
 {% endif %}
 <style>
+    body{
+        display: grid;
+        grid-gap: 1rem;
+    }
     @media (min-width: 600px) {
-        .page__content { grid-template-columns: repeat(2, 1fr); }
+        .container { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (min-width: 900px) {
-        .page__content { grid-template-columns: repeat(3, 1fr); }
+        .container { grid-template-columns: repeat(3, 1fr); }
     }
 
     .sidenav {
