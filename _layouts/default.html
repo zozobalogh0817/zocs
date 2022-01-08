@@ -25,10 +25,9 @@
     </div>
 
     <section class="page__content e-content" itemprop="text">
-        <aside class="sidebar__right {% if page.toc_sticky %}sticky{% endif %}">
+        <aside class="toc_content_sidenav">
             {% include toc.html html=content %}
         </aside>
-        {% include toc.html html=content %}
         {{ content }}
     </section>
 </div>
@@ -55,6 +54,30 @@
     }
 
     .sidenav a:hover {
+        color: rgb(62, 62, 62);
+    }
+
+    .toc_content_sidenav {
+        height: 100%;
+        width: 300px;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        right: 0;
+        background-color: rgb(255, 255, 255);
+        overflow-x: hidden;
+        padding-top: 20px;
+    }
+
+    .toc_content_sidenav a {
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 25px;
+        color: rgba(3, 3, 3, 0.99);
+        display: block;
+    }
+
+    .toc_content_sidenav a:hover {
         color: rgb(62, 62, 62);
     }
 
