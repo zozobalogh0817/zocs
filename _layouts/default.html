@@ -39,29 +39,25 @@
 </header>
 {% endif %}
 
-<div class="container">
-    <div class="row">
-        <div class="sidenav col-sm">
-            {% for page in site.pages %}
-            {% if page.options.menuItem %}
-            <div>
-                <a href="{{ site.path }}{{ page.url }}">{{ page.title }}</a>
-            </div>
-            {% endif %}
-            {% endfor %}
-        </div>
-
-        <div class="col-sm">
-            {{ content }}
-        </div>
-
-        {% if page.options.toc %}
-        <div class="toc_content_sidenav col-sm">
-            {% include toc.html html=content %}
-        </div>
-        {% endif %}
+<div class="sidenav col-sm">
+    {% for page in site.pages %}
+    {% if page.options.menuItem %}
+    <div>
+        <a href="{{ site.path }}{{ page.url }}">{{ page.title }}</a>
     </div>
+    {% endif %}
+    {% endfor %}
 </div>
+
+<div class="col-sm">
+    {{ content }}
+</div>
+
+{% if page.options.toc %}
+<div class="toc_content_sidenav col-sm">
+    {% include toc.html html=content %}
+</div>
+{% endif %}
 </body>
 {% endif %}
 <style>
