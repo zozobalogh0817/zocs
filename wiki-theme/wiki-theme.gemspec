@@ -3,8 +3,8 @@
 Gem::Specification.new do |s|
   s.name          = "wiki-theme"
   s.version       = "0.6.0"
-  s.authors       = ["GitHub, Inc."]
-  s.email         = ["open-source@github.com"]
+  s.authors       = ["Zoltán Sándor Balogh", "GitHub, Inc."]
+  s.email         = ["zoltan.balogh@avolantis.net", "open-source@github.com"]
   s.homepage      = "https://github.com/pages-themes/jekyll-theme-primer"
   s.summary       = "Primer is a Jekyll theme for GitHub Pages based on GitHub's Primer styles"
 
