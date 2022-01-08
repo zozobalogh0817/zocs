@@ -62,6 +62,16 @@
 </body>
 {% endif %}
 <style>
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr; /*fraction*/
+    }
+
+    @media (max-width: 768px) { /*breakpoint*/
+        .container {
+            grid-template-columns: none;
+        }
+    }
     .sidenav {
         height: 100%;
         width: 300px;
