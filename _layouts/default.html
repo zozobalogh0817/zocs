@@ -20,16 +20,15 @@
     </header>
     {% endif %}
 
-    <div class="sidenav">
+    <aside class="sidenav">
         {% for page in site.pages %}
         {% if page.menu %}
         <div>
             <a href="{{ site.path }}{{ page.url }}">{{ page.title }}</a>
         </div>
         {% endif %}
-
         {% endfor %}
-    </div>
+    </aside>
 
     <section class="page__content e-content" itemprop="text">
         {% if page.toc %}
