@@ -25,47 +25,58 @@
     {% endif %}
 </div>
 {% else %}
-<body>
+<body class="container">
+{% if page.options.hasHeader %}
+<header class="masthead">
+    <h3 class="masthead-title">
+        <a href="{{ site.path }}">{{ site.title }}</a>
+    </h3>
+</header>
+{% endif %}
 
-<div class="container">
-    {% if page.options.hasHeader %}
-    <header class="masthead">
-        <h3 class="masthead-title">
-            <a href="{{ site.path }}">{{ site.title }}</a>
-        </h3>
-    </header>
-    {% endif %}
-
-    <div class="content" itemprop="text">
-        <section class="column">
-            <aside class="sidenav">
-                {% for page in site.pages %}
-                {% if page.options.menuItem %}
-                <div>
-                    <a href="{{ site.path }}{{ page.url }}">{{ page.title }}</a>
-                </div>
-                {% endif %}
-                {% endfor %}
-            </aside>
-        </section>
-
-        <section class="column">
-            {{ content }}
-        </section>
-
-        {% if page.options.toc %}
-        <section class="column">
-            <aside class="toc_content_sidenav">
-                {% include toc.html html=content %}
-            </aside>
-        </section>
+<section class="column">
+    <aside class="sidenav">
+        {% for page in site.pages %}
+        {% if page.options.menuItem %}
+        <div>
+            <a href="{{ site.path }}{{ page.url }}">{{ page.title }}</a>
+        </div>
         {% endif %}
+        {% endfor %}
+    </aside>
+</section>
 
-    </div>
+<div class="content" itemprop="text">
+    <section class="column">
+        {{ content }}
+    </section>
 </div>
+
+{% if page.options.toc %}
+<section class="column">
+    <aside class="toc_content_sidenav">
+        {% include toc.html html=content %}
+    </aside>
+</section>
+{% endif %}
 </body>
 {% endif %}
 <style>
+    .container {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    @media (min-width: 768px) {
+        .container {
+            display: grid;
+            grid-template-columns: 200px 1fr 200px;
+            grid-template-rows: auto 1fr auto;
+
+        }
+    }
+
     .sidenav {
         height: 100%;
         width: 300px;
