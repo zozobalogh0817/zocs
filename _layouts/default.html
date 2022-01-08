@@ -63,11 +63,56 @@
         grid-template-columns: 1fr 1fr 1fr; /*fraction*/
     }
 
-    @media (max-width: 768px) {
-        /*breakpoint*/
+    @media (max-width: 768px) { /*breakpoint*/
         .wrapper {
             grid-template-columns: none;
         }
+    }
+    .sidenav {
+        height: 100%;
+        width: 300px;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: rgb(255, 255, 255);
+        overflow-x: hidden;
+        padding-top: 20px;
+    }
+
+    .sidenav a {
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 22px;
+        color: rgba(3, 3, 3, 0.99);
+        display: block;
+    }
+
+    .sidenav a:hover {
+        color: rgb(62, 62, 62);
+    }
+
+    .toc_content_sidenav {
+        height: 100%;
+        width: 300px;
+        list-style: none;
+        top: 0;
+        right: 0;
+        z-index: 1;
+        overflow-x: hidden;
+        padding-top: 20px;
+        background-color: rgb(255, 255, 255);
+    }
+
+    .toc_content_sidenav a {
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 16px;
+        color: rgba(3, 3, 3, 0.99);
+        display: block;
+    }
+
+    .toc_content_sidenav a:hover {
+        color: rgb(62, 62, 62);
     }
 
     .toc_content_sidenav ul {
