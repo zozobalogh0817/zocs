@@ -37,24 +37,28 @@
     {% endif %}
 
     <section class="page__content" itemprop="text">
-        <aside class="sidenav">
-            {% for page in site.pages %}
-            {% if page.options.menuItem %}
-            <div>
-                <a href="{{ site.path }}{{ page.url }}">{{ page.title }}</a>
-            </div>
-            {% endif %}
-            {% endfor %}
-        </aside>
+        <section class="column">
+            <aside class="sidenav">
+                {% for page in site.pages %}
+                {% if page.options.menuItem %}
+                <div>
+                    <a href="{{ site.path }}{{ page.url }}">{{ page.title }}</a>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </aside>
+        </section>
 
-        <section>
+        <section class="column">
             {{ content }}
         </section>
 
         {% if page.options.toc %}
-        <aside class="toc_content_sidenav">
-            {% include toc.html html=content %}
-        </aside>
+        <section class="column">
+            <aside class="toc_content_sidenav">
+                {% include toc.html html=content %}
+            </aside>
+        </section>
         {% endif %}
 
     </section>
@@ -62,6 +66,14 @@
 </body>
 {% endif %}
 <style>
+    @media (min-width: 600px) {
+        .page__content { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (min-width: 900px) {
+        .page__content { grid-template-columns: repeat(3, 1fr); }
+    }
+
     .sidenav {
         height: 100%;
         width: 300px;
