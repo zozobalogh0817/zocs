@@ -1,7 +1,8 @@
-<h1>This resource is existed but now is archived. </h1>
+<h1>This resource has been archived, or just moved to another location</h1>
 <p>
     Please <a href="{{ site.data.settings.home }}">go to home page</a> or contact with the owner
 </p>
+
 <h2>Contact us</h2>
 <div>
     {% if site.data.settings.contactUs.ownerName %}
@@ -17,6 +18,10 @@
     {% endif %}
 </div>
 
+<h1>You will be redirected automatically after 10 seconds</h1>
+
 <script>
-    window.location.href = "{{ site.path }}{{ site.data.settings.home }}";
+    setTimeout(() => {
+        window.location.href = "{{ site.path }}{{ site.data.settings.home }}";
+    }, 8000)
 </script>
