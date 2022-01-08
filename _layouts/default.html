@@ -14,9 +14,13 @@
 <div>
     {% if site.data.settings.contactUs.ownerName %}
     <p>{{site.data.settings.contactUs.ownerName}}</p>
-    {% else if site.data.settings.contactUs.ownerEmail %}
+    {% endif %}
+
+    {% if site.data.settings.contactUs.ownerEmail %}
     <p>{{site.data.settings.contactUs.ownerEmail}}</p>
-    {% else if site.data.settings.contactUs.supportEmail %}
+    {% endif %}
+
+    {% if site.data.settings.contactUs.supportEmail %}
     <p>{{site.data.settings.contactUs.supportEmail}}</p>
     {% endif %}
 </div>
