@@ -9,9 +9,11 @@ options: {menuItem: true}
 > Az alkalmazás vagy a frissítő önálló letöltése elég a program sikeres futtatásához.
 
 Abban az esetben ha ön az `Alkalmazást` töltötte le.
+
 **Nincs más tehendője mint el indítani és használni!**
 
 Ha ön a `Frissítőt` töltötte le.
+
 **Egyszerűen csak futassa, és várjon amíg letölti és elindítja az alkalmazás legfrissebb verzóját**
 
 <table id="table">
