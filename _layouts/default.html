@@ -17,16 +17,18 @@
 
     <div class="sidenav">
         {% for post in site.posts %}
+
         <div>
             <a href="{{ site.path }}{{ post.url }}">{{ post.title }}</a>
             <div class="post-date">{{ post.date | date: "%b %-d, %Y" }}</div>
         </div>
+
+        {% endfor %}
     </div>
 
     <div id="content">
         {{ content }}
     </div>
-
 </div><!-- .container -->
 </body>
 <style>
@@ -70,5 +72,4 @@
         }
     }
 </style>
-
 </html>
