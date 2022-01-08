@@ -16,11 +16,10 @@
     </header>
 
     <div class="sidenav">
-        {% for post in site.posts %}
+        {% for topic in site.topics %}
 
         <div>
-            <a href="{{ site.path }}{{ post.url }}">{{ post.title }}</a>
-            <div class="post-date">{{ post.date | date: "%b %-d, %Y" }}</div>
+            <a href="{{ site.path }}{{ topic.url }}">{{ topic.title }}</a>
         </div>
 
         {% endfor %}
@@ -34,12 +33,12 @@
 <style>
     .sidenav {
         height: 100%;
-        width: 160px;
+        width: 300px;
         position: fixed;
         z-index: 1;
         top: 0;
         left: 0;
-        background-color: #111;
+        background-color: rgb(255, 255, 255);
         overflow-x: hidden;
         padding-top: 20px;
     }
@@ -48,12 +47,12 @@
         padding: 6px 8px 6px 16px;
         text-decoration: none;
         font-size: 25px;
-        color: #818181;
+        color: rgba(3, 3, 3, 0.99);
         display: block;
     }
 
     .sidenav a:hover {
-        color: #f1f1f1;
+        color: rgb(62, 62, 62);
     }
 
     #content {

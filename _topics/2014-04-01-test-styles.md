@@ -1,6 +1,6 @@
 ---
-layout: post
-title: "Test Theme Styles"
+layout: topic
+title: "Sample Topic"
 ---
 
 # Heading 1
