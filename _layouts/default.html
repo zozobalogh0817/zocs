@@ -15,7 +15,7 @@
     </header>
 
     <div class="sidenav">
-        {% for page in site.pages %}
+        {% for page in site._pages %}
 
         <div>
             <a href="{{ site.path }}{{ page.url }}">{{ page.title }}</a>
