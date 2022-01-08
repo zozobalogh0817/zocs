@@ -6,24 +6,7 @@
     <link rel="stylesheet" type="text/css" href="{{ site.path }}/css/style.css">
 </head>
 {% if page.options.archived %}
-<h1>This resource is existed but now is archived. </h1>
-<p>
-    Please <a href="{{site.data.settings.home}}">go to home page</a> or contact with the owner
-</p>
-<h2>Contact us</h2>
-<div>
-    {% if site.data.settings.contactUs.ownerName %}
-    <p>{{site.data.settings.contactUs.ownerName}}</p>
-    {% endif %}
-
-    {% if site.data.settings.contactUs.ownerEmail %}
-    <p>{{site.data.settings.contactUs.ownerEmail}}</p>
-    {% endif %}
-
-    {% if site.data.settings.contactUs.supportEmail %}
-    <p>{{site.data.settings.contactUs.supportEmail}}</p>
-    {% endif %}
-</div>
+{% include archiveMessage.html %}
 {% else %}
 <body class="container">
 {% if page.options.hasHeader %}
