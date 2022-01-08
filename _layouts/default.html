@@ -58,19 +58,10 @@
 </body>
 {% endif %}
 <style>
-    .wrapper {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr; /*fraction*/
-    }
-
-    @media (max-width: 768px) { /*breakpoint*/
-        .wrapper {
-            grid-template-columns: none;
-        }
-    }
     .sidenav {
         height: 100%;
         width: 300px;
+        position: fixed;
         z-index: 1;
         top: 0;
         left: 0;
@@ -94,6 +85,7 @@
     .toc_content_sidenav {
         height: 100%;
         width: 300px;
+        position: fixed;
         list-style: none;
         top: 0;
         right: 0;
