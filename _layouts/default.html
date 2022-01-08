@@ -36,7 +36,7 @@
     </header>
     {% endif %}
 
-    <section class="page__content e-content" itemprop="text">
+    <section class="page__content" itemprop="text">
         <aside class="sidenav">
             {% for page in site.pages %}
             {% if page.options.menuItem %}
@@ -62,6 +62,13 @@
 </body>
 {% endif %}
 <style>
+    .container {
+        display: grid;
+        grid-template-columns: 200px 1fr 200px;
+        grid-template-rows: auto 1fr auto;
+        height: 100vh;
+    }
+
     .sidenav {
         height: 100%;
         width: 300px;
