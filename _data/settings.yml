@@ -1,1 +1,9 @@
+# Home page of the site
 home: "/home"
+# An email address or
+contactUs:
+  {
+    ownerName: "Balogh Zoltán Sándor"
+    ownerEmail: "Balogh Zoltán Sándor"
+    supportEmail: "zoltan.balogh@avolantis.net"
+  }

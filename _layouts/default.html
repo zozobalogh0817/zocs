@@ -5,14 +5,26 @@
     <title>{{ page.title }} - {{ site.title }}</title>
     <link rel="stylesheet" type="text/css" href="{{ site.path }}/css/style.css">
 </head>
-{% if page.excludeRender %}
-<h1>This page is exist but excluded from render.</h1>
-<a href="{{site.data.settings.home}}">Go to home page</a>
+{% if page.options.archived %}
+<h1>This resource is existed but now is archived. </h1>
+<p>
+    Please <a href="{{site.data.settings.home}}">go to home page</a> or contact with the owner
+</p>
+<h2>Contact us</h2>
+<div>
+    {% if site.data.settings.contactUs.ownerName %}
+    <p>{{site.data.settings.contactUs.ownerName}}</p>
+    {% else if site.data.settings.contactUs.ownerEmail %}
+    <p>{{site.data.settings.contactUs.ownerEmail}}</p>
+    {% else if site.data.settings.contactUs.supportEmail %}
+    <p>{{site.data.settings.contactUs.supportEmail}}</p>
+    {% endif %}
+</div>
 {% else %}
 <body>
 
 <div class="container">
-    {% if page.hasHeader %}
+    {% if page.options.hasHeader %}
     <header class="masthead">
         <h3 class="masthead-title">
             <a href="{{ site.path }}">{{ site.title }}</a>
@@ -22,7 +34,7 @@
 
     <aside class="sidenav">
         {% for page in site.pages %}
-        {% if page.menuItem %}
+        {% if page.options.menuItem %}
         <div>
             <a href="{{ site.path }}{{ page.url }}">{{ page.title }}</a>
         </div>
@@ -31,7 +43,7 @@
     </aside>
 
     <section class="page__content e-content" itemprop="text">
-        {% if page.toc %}
+        {% if page.options.toc %}
         <aside class="toc_content_sidenav">
             {% include toc.html html=content %}
         </aside>

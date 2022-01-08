@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Versions
-menuItem: true
+options: {menuItem: true}
 ---
 
 <div>
