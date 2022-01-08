@@ -34,8 +34,8 @@
 </header>
 {% endif %}
 
-<section class="column">
-    <aside class="sidenav">
+<div class="wrapper">
+    <div class="sidenav">
         {% for page in site.pages %}
         {% if page.options.menuItem %}
         <div>
@@ -43,96 +43,35 @@
         </div>
         {% endif %}
         {% endfor %}
-    </aside>
-</section>
+    </div>
 
-<div class="content" itemprop="text">
-    <section class="column">
+    <div class="column">
         {{ content }}
-    </section>
-</div>
+    </div>
 
-{% if page.options.toc %}
-<section class="column">
-    <aside class="toc_content_sidenav">
+    {% if page.options.toc %}
+    <div class="toc_content_sidenav">
         {% include toc.html html=content %}
-    </aside>
-</section>
-{% endif %}
+    </div>
+    {% endif %}
+</div>
 </body>
 {% endif %}
 <style>
-    .container {
+    .wrapper {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr; /*fraction*/
     }
 
-    @media (max-width: 768px) { /*breakpoint*/
-        .container {
+    @media (max-width: 768px) {
+        /*breakpoint*/
+        .wrapper {
             grid-template-columns: none;
         }
-    }
-    .sidenav {
-        height: 100%;
-        width: 300px;
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        left: 0;
-        background-color: rgb(255, 255, 255);
-        overflow-x: hidden;
-        padding-top: 20px;
-    }
-
-    .sidenav a {
-        padding: 6px 8px 6px 16px;
-        text-decoration: none;
-        font-size: 22px;
-        color: rgba(3, 3, 3, 0.99);
-        display: block;
-    }
-
-    .sidenav a:hover {
-        color: rgb(62, 62, 62);
-    }
-
-    .toc_content_sidenav {
-        height: 100%;
-        width: 300px;
-        position: fixed;
-        list-style: none;
-        top: 0;
-        right: 0;
-        z-index: 1;
-        overflow-x: hidden;
-        padding-top: 20px;
-        background-color: rgb(255, 255, 255);
-    }
-
-    .toc_content_sidenav a {
-        padding: 6px 8px 6px 16px;
-        text-decoration: none;
-        font-size: 16px;
-        color: rgba(3, 3, 3, 0.99);
-        display: block;
-    }
-
-    .toc_content_sidenav a:hover {
-        color: rgb(62, 62, 62);
     }
 
     .toc_content_sidenav ul {
         list-style-type: none;
-    }
-
-    @media screen and (max-height: 450px) {
-        .sidenav {
-            padding-top: 15px;
-        }
-
-        .sidenav a {
-            font-size: 18px;
-        }
     }
 </style>
 </html>
