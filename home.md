@@ -2,7 +2,7 @@
 layout: page
 title: Home
 toc: true
-menu: true
+menuItem: true
 hasHeader: true
 ---
 
