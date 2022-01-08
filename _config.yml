@@ -1,15 +1,15 @@
 ###########
 # site.title, site.url, site.author.name
 
-title:   'Jekyll Minimal Theme'
+title:   'WAT.VR'
 author:
-  name:  'Jekyll Minimal Theme Team'
+  name:  'WAT.VR BZ'
 
-## note: 
+## note:
 #  use site.path in your templates to make it work for both protocols e.g. http and https
 #  use site.url only inside the web feed template (e.g. requires full url incl. protocol)
-path: /jekyll-minimal-theme  
-url:  'http://henrythemes.github.io/jekyll-minimal-theme'
+path: /zozobalogh0817.github.io
+url:  'http://watvr.me/home'
 
 
 ########
