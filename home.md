@@ -2,6 +2,7 @@
 layout: page
 title: Home
 toc: true
+menu: true
 ---
 
 This application was made to make other person's life much much easier.

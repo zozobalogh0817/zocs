@@ -16,7 +16,7 @@
 
     <div class="sidenav">
         {% for page in site.pages %}
-        {% if page.exclude == false %}
+        {% if page.menu %}
         <div>
             <a href="{{ site.path }}{{ page.url }}">{{ page.title }}</a>
         </div>
