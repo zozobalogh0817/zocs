@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Versions
+toc: true
 ---
 
 <div>

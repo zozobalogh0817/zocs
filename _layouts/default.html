@@ -25,10 +25,15 @@
     </div>
 
     <section class="page__content e-content" itemprop="text">
+        {% if page.toc %}
         <aside class="toc_content_sidenav">
             {% include toc.html html=content %}
         </aside>
+        {% endif %}
+
+        {% if !page.exclude %}
         {{ content }}
+        {% endif %}}
     </section>
 </div>
 </body>
