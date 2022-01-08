@@ -1,6 +1,6 @@
 ---
 layout: topic
-title: "Sample Topic"
+title: "Sample Topic 5"
 ---
 
 The sportdb command line tool now includes a new quick starter

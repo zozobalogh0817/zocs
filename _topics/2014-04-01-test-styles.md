@@ -1,6 +1,6 @@
 ---
 layout: topic
-title: "Sample Topic"
+title: "Test Theme Styles"
 ---
 
 # Heading 1

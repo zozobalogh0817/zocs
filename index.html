@@ -1,6 +1,10 @@
 ---
 layout: default
-title: Welcome
+title: "Index Page"
 ---
 
-# This is a simple wiki index page
+{% for topic in site.topics %}
+<div>
+    {{ topic.title }}
+</div>
+{% endfor %}

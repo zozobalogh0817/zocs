@@ -1,6 +1,6 @@
 ---
 layout: topic
-title: "Sample Topic"
+title: "Sample Topic 1"
 ---
 
 

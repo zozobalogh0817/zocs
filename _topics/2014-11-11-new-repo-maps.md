@@ -1,6 +1,6 @@
 ---
 layout: topic
-title: "Sample Topic"
+title: "Sample Topic 4"
 ---
 
 Added a new repo, that is, `/maps` for hosting 'full-screen'

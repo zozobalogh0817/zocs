@@ -205,27 +205,27 @@ table {
 //////////////////////////
 // Posts
 
-.post {
+.topic {
   margin-bottom: 4em;
 
   // note: only change margin for title,date if inside post block
-  .post-title {
+  .topic-title {
     margin-top: 0;
   }
 
   // Meta data line below post title
-  .post-date {
+  .topic-date {
     display: block;
     margin-top:  -.5rem;
     margin-bottom: 1rem;
   }
 }
 
-.post-title,
-.post-title a {
+.topic-title,
+.topic-title a {
   color: $post-title-color;
 }
 
-.post-date {
+.topic-date {
   color: $post-date-color;
 }

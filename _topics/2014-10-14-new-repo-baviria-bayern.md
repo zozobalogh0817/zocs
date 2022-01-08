@@ -1,6 +1,6 @@
 ---
 layout: topic
-title: "Sample Topic"
+title: "Sample Topic 2"
 ---
 
 Moved all beer, brewpub n brewery data for Bayern
