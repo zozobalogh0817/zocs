@@ -36,7 +36,7 @@
     </header>
     {% endif %}
 
-    <section class="page__content" itemprop="text">
+    <div class="content" itemprop="text">
         <section class="column">
             <aside class="sidenav">
                 {% for page in site.pages %}
@@ -61,23 +61,23 @@
         </section>
         {% endif %}
 
-    </section>
+    </div>
 </div>
 </body>
 {% endif %}
 <style>
-    .container{
+    .content{
         margin: 0 auto;
         max-width: 1200px;
         display: grid;
         grid-gap: 1rem;
     }
     @media (min-width: 600px) {
-        .container { grid-template-columns: repeat(2, 1fr); }
+        .content { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (min-width: 900px) {
-        .container { grid-template-columns: repeat(3, 1fr); }
+        .content { grid-template-columns: repeat(3, 1fr); }
     }
 
     .sidenav {
