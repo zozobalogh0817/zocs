@@ -1,3 +1,8 @@
+---
+layout: page
+title: Home
+---
+
 This application was made to make other person's life much much easier.
 
 ### Usage of application 
