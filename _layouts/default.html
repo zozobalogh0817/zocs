@@ -19,12 +19,11 @@
 
     <div class="sidenav">
         {% for page in site.pages %}
-        {% if page.exclude %}
-        <div></div>
-        {% endif %}
+        {% if !page.exclude %}
         <div>
             <a href="{{ site.path }}{{ page.url }}">{{ page.title }}</a>
         </div>
+        {% endif %}
 
         {% endfor %}
     </div>
