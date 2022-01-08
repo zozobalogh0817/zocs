@@ -1,85 +1,20 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>WATVR - THE APP</title>
-</head>
-<body>
-<div>
-    <h2>Az alkalmazás vagy a frissítő önálló letöltése elég a program sikeres futtatásához</h2>
-    <p>Abban az esetben ha ön az alkalmazás letöltési linkjét válaszotta.
-        <b>
-            Nincs más tehendője mint el indítani és használni!
-        </b>
-    </p>
-    <p>Ha ön a Frissítőt töltötte le.
-        és <b>
-            Egyszerűen csak futassa, és várjon amíg az letölti és elindítja az alkalmazás legfrissebb verzóját
-        </b>
-    </p>
-</div>
-<table border id="table">
-    <tr>
-        <th>Verzió szám</th>
-        <th>Változások</th>
-        <th>Legrégebbi ?</th>
-        <th>Alkalmazás letöltési link</th>
-        <th>Frissítő letöltési link</th>
-    </tr>
-</table>
+---
+layout: default
+title: Welcome
+---
 
-<script type="text/javascript">
-    class Version {
-        latest
-        version
-        updatePatchUrl
-        updaterUrl
-        changeLog
-    }
 
-    class Versions {
-        versions
-    }
+{% for post in site.posts %}
 
-    function GetMechanic() {
-        let response = fetch("https://gist.githubusercontent.com/zozobalogh0817/3b2ef4e635f0e3b7a9a3ffe3c0a5d051/raw")
-        response
-            .then(value => value.json())
-            .then((json) => {
-                let table = document.getElementById("table");
-                json.versions.forEach(async (value) => {
-                    let rowElement = document.createElement("tr")
-                    let versionNumberCellElement = document.createElement("td")
-                    versionNumberCellElement.innerText = value.version
-                    let latestCellElement = document.createElement("td")
-                    latestCellElement.innerText = value.latest
-                    let changeLogCellElement = document.createElement("td")
-                    changeLogCellElement.innerHTML = value.changeLog.join("<br>")
-                    let downloadLinkElement = document.createElement("td")
-                    let updaterLinkElement = document.createElement("td")
-                    let mergerDownloadUrl = value.updatePatchUrl.slice(0, 19)
-                        + "/get"
-                        + value.updatePatchUrl.slice(19)
-                    let updaterDownloadUrl = value.updaterUrl.slice(0, 19)
-                        + "/get"
-                        + value.updatePatchUrl.slice(19)
-                    downloadLinkElement.innerHTML = `<a href=${mergerDownloadUrl} download="Merger.exe"><button> Download Merger</button></a>`
-                    updaterLinkElement.innerHTML = `<a href=${updaterDownloadUrl} download="Updater.exe"><button> Download Updater</button></a>`
+<article class='post'>
+  <h1 class='post-title'>
+    <a href="{{ site.path }}{{ post.url }}">
+      {{ post.title }}
+    </a>
+  </h1>
+  <div class="post-date">{{ post.date | date: "%b %-d, %Y" }}</div>
+  {{ post.content }}
+</article>
 
-                    rowElement.append(versionNumberCellElement)
-                    rowElement.append(changeLogCellElement)
-                    rowElement.append(latestCellElement)
-                    rowElement.append(downloadLinkElement)
-                    rowElement.append(updaterLinkElement)
-                    table.append(rowElement)
-                })
-            })
-    }
+{% endfor %}
 
-    GetMechanic()
-</script>
-</body>
-</html>
