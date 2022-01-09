@@ -11,8 +11,6 @@ author:
 path: /zozobalogh0817.github.io
 url:  'http://watvr.me/home'
 
-
-
 markdown: kramdown
 
 sass:
@@ -23,7 +21,6 @@ permalink: /:title.html
 
 exclude:
 - README.md
-
 
 safe: true
 lsi: false

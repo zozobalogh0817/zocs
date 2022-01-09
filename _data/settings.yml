@@ -6,7 +6,9 @@ private: false
 
 # Header section
 hasHeader: true
-# header size can be given (1 - 6) (1 is the biggest, 6 is the smallest)
+# It can either h or display
+headerType: display
+# header size can be given (1 - 6) (1 is the biggest, 6 is the smallest in case headerType is display otherwise it reversed)
 headerSize: 5
 # END #
 
