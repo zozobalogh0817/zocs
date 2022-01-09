@@ -175,6 +175,20 @@ table {
   margin-right: auto;
 }
 
+/*
+  Responsive columns layout
+*/
+.columns {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.column {
+  flex: 33.33%;
+}
+
 ///////////////////////////////////////////////////
 //  Masthead
 
