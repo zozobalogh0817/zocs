@@ -9,7 +9,7 @@
     {% for page in site.pages %}
     {% if page.options.menuItem %}
     <div>
-        <a href="{{ page.url }}">{{ page.title }}</a>
+        <a href="{{ site.path }}{{ page.url }}">{{ page.title }}</a>
     </div>
     {% endif %}
     {% endfor %}
