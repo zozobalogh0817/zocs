@@ -18,10 +18,37 @@
     {% endif %}
 </div>
 
-<h1>You will be redirected automatically after 10 seconds</h1>
+<h1 id="timeRemaining">You will be redirected automatically after & seconds</h1>
 
 <script>
-    setTimeout(() => {
+    (function () {
+        let nativeSetTimeout = window.setTimeout;
+
+        window.bindTimeout = function (listener, interval) {
+            function setTimeout(code, delay) {
+                var elapsed = 0,
+                    h;
+
+                h = window.setInterval(function () {
+                    elapsed += interval;
+                    if (elapsed < delay) {
+                        listener(delay - elapsed);
+                    } else {
+                        window.clearInterval(h);
+                    }
+                }, interval);
+                return nativeSetTimeout(code, delay);
+            }
+
+            window.setTimeout = setTimeout;
+            setTimeout._native = nativeSetTimeout;
+        };
+    }());
+    window.bindTimeout(function (t) {
+        let element = document.getElementById("timeRemaining");
+        element.innerText = element.innerText.replace("&", (t / 100));
+    }, 100);
+    window.setTimeout(function () {
         window.location.href = "{{ site.path }}{{ site.data.settings.home }}";
-    }, 8000)
+    }, 1000);
 </script>
