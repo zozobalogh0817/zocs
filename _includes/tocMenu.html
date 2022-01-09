@@ -1,0 +1,35 @@
+{% if page.options.toc %}
+<div class="toc_content_sidenav">
+    {% include toc.html html=content %}
+</div>
+{% endif %}
+<style>
+    .toc_content_sidenav {
+        height: 100%;
+        width: 300px;
+        position: fixed;
+        list-style: none;
+        top: 0;
+        right: 0;
+        z-index: 1;
+        overflow-x: hidden;
+        padding-top: 20px;
+        background-color: rgb(255, 255, 255);
+    }
+
+    .toc_content_sidenav a {
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 16px;
+        color: rgba(3, 3, 3, 0.99);
+        display: block;
+    }
+
+    .toc_content_sidenav a:hover {
+        color: rgb(62, 62, 62);
+    }
+
+    .toc_content_sidenav ul {
+        list-style-type: none;
+    }
+</style>
