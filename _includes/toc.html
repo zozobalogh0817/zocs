@@ -1,3 +1,4 @@
+<ul class="collapsibleList">
 {% capture tocWorkspace %}
     {% comment %}
         Copyright (c) 2017 Vladimir "allejo" Jimenez
@@ -180,3 +181,8 @@
         {% endif %}
     {% endif %}
 {% endcapture %}{% assign tocWorkspace = '' %}{{ deprecation_warnings }}{{ jekyll_toc -}}
+</ul>
+
+<script src="CollapsibleLists.src.js">
+    CollapsibleLists.apply();
+</script>
