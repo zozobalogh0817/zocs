@@ -18,7 +18,7 @@
     {% endif %}
 </div>
 
-<h1 id="timeRemaining">You will be redirected automatically after & seconds</h1>
+<h1>You will be redirected automatically after <p id="timeRemaining"/> seconds</h1>
 
 <script>
     (function () {
@@ -26,7 +26,7 @@
 
         window.bindTimeout = function (listener, interval) {
             function setTimeout(code, delay) {
-                var elapsed = 0,
+                let elapsed = 0,
                     h;
 
                 h = window.setInterval(function () {
@@ -46,9 +46,9 @@
     }());
     window.bindTimeout(function (t) {
         let element = document.getElementById("timeRemaining");
-        element.innerText = element.innerText.replace("&", (t / 100));
-    }, 100);
+        element.innerText = (t / 1000);
+    }, 1000);
     window.setTimeout(function () {
         window.location.href = "{{ site.path }}{{ site.data.settings.home }}";
-    }, 10000);
+    }, 8000);
 </script>
