@@ -8,7 +8,7 @@ This is intended as a quick reference and showcase. For more complete info, see 
 
 This cheatsheet is specifically *Markdown Here's* version of Github-flavored Markdown. This differs slightly in styling and syntax from what Github uses, so what you see below might vary a little from what you get in a *Markdown Here* email, but it should be pretty close.
 
-## Headers
+# Headers
 
 ```no-highlight
 # H1
