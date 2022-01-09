@@ -18,7 +18,7 @@
     {% endif %}
 </div>
 
-You will be redirected automatically after <b id="timeRemaining"></b> seconds
+You will be redirected automatically after <b id="timeRemaining">{{ site.data.settings.redirectTimeOut }}</b> seconds
 
 <script>
     (function () {
@@ -50,5 +50,5 @@ You will be redirected automatically after <b id="timeRemaining"></b> seconds
     }, 1000);
     window.setTimeout(function () {
         window.location.href = "{{ site.path }}{{ site.data.settings.home }}";
-    }, 8000);
+    }, "{{ site.data.settings.redirectTimeOut }}000");
 </script>
