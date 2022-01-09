@@ -1,6 +1,7 @@
 # Basic section
 home: "/home"
 redirectTimeOut: 10
+private: false
 # END #
 
 # Header section
