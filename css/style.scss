@@ -6,12 +6,12 @@
 
 html {
   font-family: $font-family;
-  font-size:   20px;
+  font-size: 20px;
   line-height: 1.5;
 }
 
 body {
-  color:            $body-color;
+  color: $body-color;
   background-color: $body-background-color;
 }
 
@@ -19,7 +19,7 @@ body {
 // Links
 
 a {
-  color:           $link-color;
+  color: $link-color;
   text-decoration: none;
 
   strong {
@@ -37,23 +37,27 @@ a {
 // Headings
 
 h1, h2, h3, h4, h5, h6 {
-  margin-bottom:  .5rem;
-  font-weight:    bold;
-  line-height:    1.25;
-  color:          $headings-color;
+  margin-bottom: .5rem;
+  font-weight: bold;
+  line-height: 1.25;
+  color: $headings-color;
   text-rendering: optimizeLegibility;
 }
+
 h1 {
   font-size: 2rem;
 }
+
 h2 {
   margin-top: 1rem;
   font-size: 1.5rem;
 }
+
 h3 {
   margin-top: 1.5rem;
   font-size: 1.25rem;
 }
+
 h4, h5, h6 {
   margin-top: 1rem;
   font-size: 1rem;
@@ -83,6 +87,7 @@ ul, ol, dl {
 dt {
   font-weight: bold;
 }
+
 dd {
   margin-bottom: .5rem;
 }
@@ -95,6 +100,7 @@ code,
 pre {
   font-family: $code-font-family;
 }
+
 code {
   padding: .25em .5em;
   font-size: 85%;
@@ -151,8 +157,8 @@ table {
 
   td,
   th {
-   padding: .25rem .5rem;
-   border: 1px solid $table-border-color;
+    padding: .25rem .5rem;
+    border: 1px solid $table-border-color;
   }
 
   tr:nth-child(odd) td,
@@ -162,42 +168,44 @@ table {
 }
 
 
-
 ////////////////////////////////
 //  Container
 //   -- centers page content
 
 .container {
   max-width: 38rem;
-  padding-left:  1rem;
+  padding-left: 1rem;
   padding-right: 1rem;
-  margin-left:  auto;
+  margin-left: auto;
   margin-right: auto;
+  display: flex;
 }
 
 /*
   Responsive columns layout
 */
-.columns {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
-}
 
 .column {
-  flex: 33.33%;
+  width: 100px; /* A fixed width as the default */
+}
+
+.content {
+  flex-grow: 1; /* Set the middle element to grow and stretch */
+}
+
+.column + .column {
+  margin-left: 2%;
 }
 
 ///////////////////////////////////////////////////
 //  Masthead
 
 .masthead {
-  padding-top:    1rem;
+  padding-top: 1rem;
   padding-bottom: 1rem;
   margin-bottom: 3rem;
 
- .masthead-title {
+  .masthead-title {
     margin-top: 0;
     margin-bottom: 0;
     color: $masthead-color;
