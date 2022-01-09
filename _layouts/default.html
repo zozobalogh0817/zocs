@@ -9,16 +9,16 @@
 {% include archiveMessage.html %}
 {% else %}
 <body class="container">
-<div class="columns">
-    <div class="column">
+<div class="row">
+    <div class="col col-sm">
         {% include menu.html %}
     </div>
 
-    <div class="content">
+    <div class="col-5 col-sm">
         {{ content }}
     </div>
 
-    <div class="column">
+    <div class="col col-sm">
         {% include tocMenu.html %}
     </div>
 </div>
