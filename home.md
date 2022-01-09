@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Home
-options: { toc: true, menuItem: true, hasHeader: true, archived: false}
+options: { toc: true, menuItem: true, archived: false}
 ---
 
 This application was made to make other person's life much, much easier.

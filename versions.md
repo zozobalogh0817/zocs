@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Versions
-options: {menuItem: true}
+options: { toc: false, menuItem: true, archived: false }
 ---
 
 ## Frissítés vagy telepítés

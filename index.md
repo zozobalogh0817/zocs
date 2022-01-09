@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Index
-options: { toc: false, menuItem: false, hasHeader: false, archived: true }
+options: { toc: false, menuItem: false, archived: true }
 ---
 <h1>Welcome page</h1>
 
