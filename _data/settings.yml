@@ -6,6 +6,8 @@ private: false
 
 # Header section
 hasHeader: true
+# header size can be given (1 - 6) (1 is the biggest, 6 is the smallest)
+headerSize: 5
 # END #
 
 # Contact section
