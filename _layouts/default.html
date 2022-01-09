@@ -8,16 +8,14 @@
 {% if page.options.archived %}
 {% include archiveMessage.html %}
 {% else %}
-<body class="container">
-<div class="wrapper">
-    {% include menu.html %}
+<body>
+{% include menu.html %}
 
-    <div class="column">
-        {{ content }}
-    </div>
-
-    {% include tocMenu.html %}
+<div class="container">
+    {{ content }}
 </div>
+
+{% include tocMenu.html %}
 </body>
 {% endif %}
 </html>

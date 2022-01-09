@@ -201,31 +201,3 @@ table {
   }
 }
 
-
-//////////////////////////
-// Topics
-
-.topic {
-  margin-bottom: 4em;
-
-  // note: only change margin for title,date if inside post block
-  .topic-title {
-    margin-top: 0;
-  }
-
-  // Meta data line below post title
-  .topic-date {
-    display: block;
-    margin-top:  -.5rem;
-    margin-bottom: 1rem;
-  }
-}
-
-.topic-title,
-.topic-title a {
-  color: $post-title-color;
-}
-
-.topic-date {
-  color: $post-date-color;
-}
