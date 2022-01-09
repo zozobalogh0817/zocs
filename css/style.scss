@@ -178,24 +178,11 @@ table {
   padding-right: 1rem;
   margin-left: auto;
   margin-right: auto;
-  display: flex;
 }
 
 /*
   Responsive columns layout
 */
-
-.column {
-  width: 100px; /* A fixed width as the default */
-}
-
-.content {
-  flex-grow: 1; /* Set the middle element to grow and stretch */
-}
-
-.column + .column {
-  margin-left: 2%;
-}
 
 ///////////////////////////////////////////////////
 //  Masthead
