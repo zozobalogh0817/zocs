@@ -93,16 +93,6 @@ Will produce the following routes
 # Pages
 Pages can be different types with different settings
 
-You can define these settings with a simple Markdown table at the top of your file
-
-Like the following
-
----
-layout: page
-title: My Page
-options: { toc: true, menuItem: true, archived: false }
----
-
 ## Page extensions
 Pages can be file type `.md` or `.html`
 
