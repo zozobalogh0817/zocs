@@ -24,7 +24,6 @@
             integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
     <!-- EASTEREGG.JS 1.x -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/egg.js/1.0/egg.min.js"></script>
-
     <!-- JQUERY 3.x -->
     <script src="https://code.jquery.com/jquery-3.6.0.js"
             integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
@@ -58,5 +57,11 @@
 {% endif %}
 </body>
 <script>anchors.add();</script>
+{% endif %}
+{% if site.data.settings.devToolsEnabled %}
+<script>
+    var simpleEgg = new Egg();
+    simpleEgg.addCode('{{ site.data.settings.devToolsKey }}'.split(""), () => console.log("Simple Egg Has Been Spawned")).addHook(function(){console.log("Hook called for: " + this.activeEgg.keys); console.log(this.activeEgg.metadata);}).listen(); </script>
+</script>
 {% endif %}
 </html>

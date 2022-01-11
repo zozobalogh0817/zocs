@@ -15,3 +15,13 @@ headerSize: 5
 # Contact section
 contactUs: { ownerName: "Balogh Zoltán Sándor",supportEmail: "zoltan.balogh@avolantis.net" }
 # END #
+
+# Developer Tools Section
+devToolsEnabled: true
+# Define a word the dev tools
+# like
+# dev$vauŁt@
+# 639DEV639
+# developer-tools
+# activate-dev-tools
+devToolsKey: cabata
