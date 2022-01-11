@@ -17,6 +17,10 @@ body {
 //////////////
 // Links
 
+a:focus{
+  color: $link-color !important;
+}
+
 a, a:hover, a:focus {
   color: $link-color;
   text-decoration: none !important;
