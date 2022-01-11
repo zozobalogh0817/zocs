@@ -12,16 +12,10 @@
 
 {% if site.settings.hasHeader %}
 <header class="masthead">
-    {% if site.settings.headerType == "h" %}
-    <b class="masthead-title {{ site.settings.headerType }}{{ site.settings.headerSize }}">
+    <b class="masthead-title h4">
         <a href="{{ site.path }}{{ site.settings.home }}">{{ site.title }}</a>
     </b>
-    {% endif %}
-    {% if site.settings.headerType == "display" %}
-    <b class="masthead-title {{ site.settings.headerType }}-{{ site.settings.headerSize }}">
-        <a href="{{ site.path }}{{ site.settings.home }}">{{ site.title }}</a>
-    </b>
-    {% endif %}
+
     {% include menu.html %}
 </header>
 {% endif %}
