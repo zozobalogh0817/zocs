@@ -1,8 +1,8 @@
 <div class="sidenav">
-    {% if site.data.settings.hasHeader %}
+    {% if site.settings.hasHeader %}
     <header class="masthead">
-        <b class="masthead-title {{ site.data.settings.headerType }}-{{ site.data.settings.headerSize }}}">
-            <a href="{{ site.path }}{{ site.data.settings.home }}">{{ site.title }}</a>
+        <b class="masthead-title {{ site.settings.headerType }}-{{ site.settings.headerSize }}}">
+            <a href="{{ site.path }}{{ site.settings.home }}">{{ site.title }}</a>
         </b>
     </header>
     {% endif %}

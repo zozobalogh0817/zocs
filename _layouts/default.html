@@ -46,7 +46,7 @@
         {% include tocMenu.html %}
     </div>
 </div>
-{% if site.data.settings.private != true %}
+{% if site.settings.private != true %}
 <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
     <div class="text-white">
         This site is open source. {% github_edit_link "Improve this page" %}.
@@ -56,13 +56,23 @@
 </body>
 <script>anchors.add();</script>
 {% endif %}
-{% if site.data.settings.devToolsEnabled %}
+{% if site.settings.devToolsEnabled %}
 <script>
-    var simpleEgg = new Egg();
-    simpleEgg.addCode('{{ site.data.settings.devToolsKey }}'.split(""), () => console.log("Simple Egg Has Been Spawned")).addHook(function () {
+    let simpleEgg = new Egg();
+    let executionKey = '{{ site.settings.devToolsKey }}'.split("");
+    simpleEgg
+        .addCode(executionKey, egg)
+        .addHook(eggHook)
+        .listen();
+
+    function egg() {
+        console.log("Simple Egg Has Been Spawned");
+    }
+
+    function eggHook() {
         console.log("Hook called for: " + this.activeEgg.keys);
         console.log(this.activeEgg.metadata);
-    }).listen(); </script>
+    }
 </script>
 {% endif %}
 </html>

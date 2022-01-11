@@ -1,26 +1,56 @@
 ###########
 # site.title, site.url, site.author.name
-
-title:   'Wiki theme documentation'
+title: 'Wiki theme documentation'
 author:
-  name:  'Balogh Zoltán Sándor'
+  name: 'Balogh Zoltán Sándor'
 
 ## note:
 #  use site.path in your templates to make it work for both protocols e.g. http and https
 #  use site.url only inside the web feed template (e.g. requires full url incl. protocol)
 path: 'http://watvr.me'
-url:  'http://watvr.me/home'
+url: 'http://watvr.me/home'
+
+# Site Settings (this can be reaced in code with site.settings.PROPERTY_PLACEHOLDER)
+settings: {
+  # Basic section
+  home: "/home"
+    redirectTimeOut: 10
+    private: false
+    # END #
+
+    # Header section
+    hasHeader: true
+    # It can either h or display
+    headerType: display
+    # header size can be given (1 - 6) (1 is the biggest, 6 is the smallest in case headerType is display otherwise it reversed)
+    headerSize: 5
+    # END #
+
+    # Contact section
+    contactUs: { ownerName: "Balogh Zoltán Sándor",supportEmail: "zoltan.balogh@avolantis.net" }
+    # END #
+
+    # Developer Tools Section
+    devToolsEnabled: true
+    # Define a word the dev tools
+    # like
+    # dev$vauŁt@
+    # 639DEV639
+    # developer-tools
+    # activate-dev-tools
+    devToolsKey: cabata
+}
 
 markdown: kramdown
 
 sass:
   sass_dir: css
-  style:    expanded
+  style: expanded
 
 permalink: /:title.html
 
 exclude:
-- README.md
+  - README.md
 
 safe: true
 lsi: false

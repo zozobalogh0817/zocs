@@ -1,27 +1,27 @@
 <h1>This resource has been archived, or just moved to another location</h1>
 <p>
-    <!-- [site.data.settings.home] Home page of the site can be set in project's (_data/settings.yml) -->
-    Please <a href="{{ site.data.settings.home }}">go to home page</a> or contact with the owner
+    <!-- [site.settings.home] Home page of the site can be set in project's (_data/settings.yml) -->
+    Please <a href="{{ site.settings.home }}">go to home page</a> or contact with the owner
 </p>
 
-<!-- [site.data.settings.contactUs] All contact us variable can be set in project's (_data/settings.yml) -->
+<!-- [site.settings.contactUs] All contact us variable can be set in project's (_data/settings.yml) -->
 <h2>Contact us</h2>
 <div>
-    {% if site.data.settings.contactUs.ownerName %}
-    <p>{{site.data.settings.contactUs.ownerName}}</p>
+    {% if site.settings.contactUs.ownerName %}
+    <p>{{site.settings.contactUs.ownerName}}</p>
     {% endif %}
 
-    {% if site.data.settings.contactUs.ownerEmail %}
-    <p>{{site.data.settings.contactUs.ownerEmail}}</p>
+    {% if site.settings.contactUs.ownerEmail %}
+    <p>{{site.settings.contactUs.ownerEmail}}</p>
     {% endif %}
 
-    {% if site.data.settings.contactUs.supportEmail %}
-    <p>{{site.data.settings.contactUs.supportEmail}}</p>
+    {% if site.settings.contactUs.supportEmail %}
+    <p>{{site.settings.contactUs.supportEmail}}</p>
     {% endif %}
 </div>
 
-<!-- [site.data.settings.redirectTimeOut] -> this variable can be set in project's (_data/settings.yml) -->
-You will be redirected automatically after <b id="timeRemaining">{{ site.data.settings.redirectTimeOut }}</b> seconds
+<!-- [site.settings.redirectTimeOut] -> this variable can be set in project's (_data/settings.yml) -->
+You will be redirected automatically after <b id="timeRemaining">{{ site.settings.redirectTimeOut }}</b> seconds
 
 <script>
     (function () {
@@ -59,10 +59,10 @@ You will be redirected automatically after <b id="timeRemaining">{{ site.data.se
     // After time is done this function is called
     window.setTimeout(() => {
             // Redirect the user
-            window.location.href = "{{ site.path }}{{ site.data.settings.home }}";
+            window.location.href = "{{ site.path }}{{ site.settings.home }}";
         },
         // Set the timeout to redirect time based on the site settings
         // 000 added because the value given in [sec] and timeout method requires [ms]
-        "{{ site.data.settings.redirectTimeOut }}000");
+        "{{ site.settings.redirectTimeOut }}000");
 
 </script>
