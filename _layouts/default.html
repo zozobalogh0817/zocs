@@ -32,20 +32,18 @@
 {% if page.options.archived %}
 {% include archiveMessage.html %}
 {% else %}
-<body>
-<div class="container">
-    <div class="row">
-        <div class="col col-md">
-            {% include menu.html %}
-        </div>
+<body class="container">
+<div class="row">
+    <div class="col col-md">
+        {% include menu.html %}
+    </div>
 
-        <div class="col-6">
-            {{ content }}
-        </div>
+    <div class="col-6">
+        {{ content }}
+    </div>
 
-        <div class="col col-md">
-            {% include tocMenu.html %}
-        </div>
+    <div class="col col-md">
+        {% include tocMenu.html %}
     </div>
 </div>
 {% if site.data.settings.private != true %}
@@ -61,7 +59,10 @@
 {% if site.data.settings.devToolsEnabled %}
 <script>
     var simpleEgg = new Egg();
-    simpleEgg.addCode('{{ site.data.settings.devToolsKey }}'.split(""), () => console.log("Simple Egg Has Been Spawned")).addHook(function(){console.log("Hook called for: " + this.activeEgg.keys); console.log(this.activeEgg.metadata);}).listen(); </script>
+    simpleEgg.addCode('{{ site.data.settings.devToolsKey }}'.split(""), () => console.log("Simple Egg Has Been Spawned")).addHook(function () {
+        console.log("Hook called for: " + this.activeEgg.keys);
+        console.log(this.activeEgg.metadata);
+    }).listen(); </script>
 </script>
 {% endif %}
 </html>
