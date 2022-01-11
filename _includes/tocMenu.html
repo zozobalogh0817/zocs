@@ -1,32 +1,50 @@
 {% if page.options.toc %}
-<div class="toc_content_sidenav">
-    <div class="h-3"><b>On this page</b></h4>
-    {% include toc.html html=content %}
-</div>
-{% endif %}
+<aside class="sidenav toc">
+    <div class="on-this-page">
+        <b class="m-2 h6">On this page</b>
+        {% include toc.html html=content %}
+    </div>
+</aside>
+
 <style>
-    .toc_content_sidenav {
-        height: 100%;
-        list-style: none;
-        z-index: 1;
-        overflow-x: hidden;
-        padding-top: 20px;
-        background-color: rgb(255, 255, 255);
+    .page_content {
+        padding-left: 14rem;
     }
 
-    .toc_content_sidenav a {
-        padding: 6px 8px 6px 16px;
+    .on-this-page {
+        margin-left: 0.8rem;
+    }
+
+    .sidenav.toc {
+        font-size: 16px;
+        background-color: #fff;
+        width: 20rem;
+        position: fixed;
+        z-index: 10;
+        margin: 0;
+        top: 2.28rem;
+        left: 0;
+        bottom: 0;
+        box-sizing: border-box;
+        border-right: 1px solid #eaecef;
+        overflow-y: auto;
+    }
+
+    .sidenav.toc a {
+        padding: 6px 4px 2px 6px;
         text-decoration: none;
         font-size: 16px;
         color: rgba(3, 3, 3, 0.99);
         display: block;
     }
 
-    .toc_content_sidenav a:hover {
+    .sidenav.toc a:hover {
         color: rgb(62, 62, 62);
     }
 
-    .toc_content_sidenav ul {
+    .sidenav.toc ul {
+        padding-left: .8rem !important;
         list-style-type: none;
     }
 </style>
+{% endif %}
