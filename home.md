@@ -96,6 +96,7 @@ Pages can be different types with different settings
 You can define these settings with a simple Markdown table at the top of your file
 
 Like the following
+
 ---
 layout: page
 title: My Page
