@@ -20,10 +20,6 @@ settings: {
 
   # Header section
   hasHeader: true,
-  # It can either h or display
-  headerType: h,
-  # header size can be given (1 - 6) (1 is the biggest, 6 is the smallest in case headerType is display otherwise it reversed)
-  headerSize: 4,
   # END #
 
   # Contact section
