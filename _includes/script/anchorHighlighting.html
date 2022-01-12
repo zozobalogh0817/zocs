@@ -8,7 +8,7 @@
     // user set a theme name in the _config.yaml
     // inner_theme: dark -accessGithubRepo--> https://github.com/zozobalogh0817/wiki-theme/themes/blob/master/css/THEME_PLACEHOLDER.css
     /* END INFO */
-8
+
     function onHashChange() {
         let activeAnchorFlag = "active_anchor border-start border-warning border-3 fw-bold";
         let wasActiveAnchorFlag = "was_active_anchor";
@@ -44,26 +44,26 @@
                             // and setting also to Bootstrap h4 class
                             element.className = element.className.replace(wasActiveAnchorFlag, activeAnchorFlag);
 
-                            // if (!timer)
-                            //     timer = setTimeout(() => {
-                            //         window.addEventListener('scroll', onScroll);
-                            //         console.log("Scroll event now set back")
-                            //     }, 4000)
-                            // else
-                            //     clearTimeout(timer)
+                            if (!timer)
+                                timer = setTimeout(() => {
+                                    window.addEventListener('scroll', onScroll);
+                                    console.log("Scroll event now set back")
+                                }, 4000)
+                            else
+                                clearTimeout(timer)
                         }
                         if (!isWereActive) {
                             // if it were never active we set class attribute to (active_anchor h4)
                             // this will highlight the current link as a h4 header without wrapping it around with <h4><h4>
                             element.setAttribute("class", activeAnchorFlag)
 
-                            // if (!timer)
-                            //     timer = setTimeout(() => {
-                            //         window.addEventListener('scroll', onScroll);
-                            //         console.log("Scroll event now set back")
-                            //     }, 4000)
-                            // else
-                            //     clearTimeout(timer)
+                            if (!timer)
+                                timer = setTimeout(() => {
+                                    window.addEventListener('scroll', onScroll);
+                                    console.log("Scroll event now set back")
+                                }, 4000)
+                            else
+                                clearTimeout(timer)
                         }
                     }
                     // If they not equals
@@ -100,7 +100,6 @@
         });
     }
 
-    // window.addEventListener('scroll', onScroll);
 
     setUpAnchors()
 
@@ -114,12 +113,36 @@
                 let element = aElementsInToc[aElementInTocKey];
                 element.onclick = () => {
                     console.log("Remove on scroll event when anchor link is clicked")
-                    // window.removeEventListener('scroll', onScroll);
+                    window.removeEventListener('scroll', onScroll);
                 }
             }
         }
     }
 
+    function scrollStop (callback, refresh = 66) {
+
+        // Make sure a valid callback was provided
+        if (!callback || typeof callback !== 'function') return;
+
+        // Setup scrolling variable
+        let isScrolling;
+
+        // Listen for scroll events
+        window.addEventListener('scroll', function (event) {
+
+            // Clear our timeout throughout the scroll
+            window.clearTimeout(isScrolling);
+
+            // Set a timeout to run after scrolling ends
+            isScrolling = setTimeout(callback, refresh);
+
+        }, false);
+
+    }
+
+    scrollStop(() =>{
+        onScroll()
+    })
     window.onhashchange = onHashChange
     window.onload = () => {
         if (window.location.hash) {
