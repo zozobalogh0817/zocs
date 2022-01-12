@@ -67,9 +67,10 @@
         }
     }
 
-    window.onload = () => {
+    document.onload = () => {
         if (window.location.hash !== "" || null) {
             changeHash();
+            anchors.add();
         }
     }
     window.onhashchange = changeHash
