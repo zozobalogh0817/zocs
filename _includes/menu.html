@@ -1,7 +1,7 @@
 <nav class="menuLinks">
     {% for page in site.pages %}
     {% if page.options.menuItem %}
-    <div class="menu-item" onload="onLoad(this)">
+    <div class="menu-item" onclick="onLoad(this)">
         <a href="{{ site.path }}{{ page.url }}">{{ page.title }}</a>
     </div>
     {% endif %}
