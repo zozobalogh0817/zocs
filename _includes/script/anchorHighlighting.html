@@ -10,6 +10,9 @@
     /* END INFO */
 
     function changeHash() {
+        let activeAnchorFlag = "active_anchor border-start border-warning border-3 fw-bold";
+        let wasActiveAnchorFlag = "was_active_anchor";
+
         let currentUrlsHash = window.location.hash.replace("#", "");
 
         // Getting TOC side nav on page
@@ -32,8 +35,6 @@
                         .replace("#", "");
                     // Compare the current anchor with the now calculated one
                     // If they equals
-                    let activeAnchorFlag = "active_anchor border-start border-warning border-3 fw-bold";
-                    let wasActiveAnchorFlag = "was_active_anchor";
                     if (anchor === currentUrlsHash) {
                         // Find out whether the anchor link's class includes "was_active_anchor" key word
                         let isWereActive = element.className.includes(wasActiveAnchorFlag);
