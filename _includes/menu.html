@@ -1,12 +1,22 @@
 <nav class="menuLinks">
     {% for page in site.pages %}
     {% if page.options.menuItem %}
-    <div class="menu-item">
+    <div class="menu-item" onload="onLoad(this)">
         <a href="{{ site.path }}{{ page.url }}">{{ page.title }}</a>
     </div>
     {% endif %}
     {% endfor %}
 </nav>
+
+<script>
+    function onLoad(element) {
+        let current_url = window.location.origin + window.location.pathname
+        let nameElement = element.getElementsByTagName("a")[0];
+        if (nameElement.href === current_url) {
+            element.className = "border-bottom border-warning border-3 fw-bold"
+        }
+    }
+</script>
 
 <style>
     .menu-item {
