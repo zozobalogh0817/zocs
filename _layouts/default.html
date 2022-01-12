@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <title>{{ page.title }} - {{ site.title }}</title>
     {% include script/main.html %}
+    <script>anchors.add();</script>
+    {% include script/anchorHighlighting.html %}
 </head>
 {% if page.options.archived %}
 {% include archiveMessage.html %}
@@ -29,9 +31,6 @@
     </div>
 </main>
 </body>
-
-<script>anchors.add();</script>
-{% include script/anchorHighlighting.html %}
 {% endif %}
 
 {% if site.settings.devTool %}

@@ -66,5 +66,10 @@
         }
     }
 
+    window.onload = () => {
+        if (window.location.hash !== "" || null) {
+            changeHash();
+        }
+    }
     window.onhashchange = changeHash
 </script>
