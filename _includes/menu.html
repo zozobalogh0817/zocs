@@ -1,7 +1,7 @@
 <nav class="menuLinks">
     {% for page in site.pages %}
     {% if page.options.menuItem %}
-    <div class="menu-item" onclick="onLoad(this)">
+    <div class="menu-item">
         <a href="{{ site.path }}{{ page.url }}">{{ page.title }}</a>
     </div>
     {% endif %}
@@ -9,14 +9,17 @@
 </nav>
 
 <script>
-    function onLoad(element) {
+    for (let elementsByClassNameElement of document.getElementsByClassName("menu-item")) {
+        setActiveMenu(elementsByClassNameElement)
+    }
+    function setActiveMenu(element) {
         let current_url = window.location.origin + window.location.pathname
         let nameElement = element.getElementsByTagName("a")[0];
         if (nameElement.href === current_url) {
             console.log(nameElement)
             console.log(nameElement.href)
             console.log(current_url)
-            element.className = "border-bottom border-warning border-3 fw-bold"
+            nameElement.className = "border-bottom border-warning border-3 fw-bold"
         }
     }
 </script>
