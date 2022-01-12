@@ -3,8 +3,8 @@
 
     {% for page in site.pages %}
     {% if page.options.menuItem %}
-    <div class="menu-item">
-        <a href="{{ site.path }}{{ page.url }}">{{ page.title }}</a>
+    <div class="m-i">
+        <a id="{{ page.url }}" href="{{ site.path }}{{ page.url }}" hidden>{{ page.title }}</a>
     </div>
     {% endif %}
     {% endfor %}
@@ -13,17 +13,224 @@
 </nav>
 
 <script>
-    for (let elementsByClassNameElement of document.getElementsByClassName("menu-item")) {
+    let menuPoints = [];
+    for (let elementsByClassNameElement of document.getElementsByClassName("m-i")) {
+        console.log(elementsByClassNameElement)
+        recursiveMenu(elementsByClassNameElement)
+    }
+
+    for (const elementsByClassNameElement of document.getElementsByClassName("menu-item")) {
         setActiveMenu(elementsByClassNameElement)
     }
+
+    function recursiveMenu(element) {
+        let nameElement = element.getElementsByTagName("a")[0];
+        if (nameElement.id) {
+            console.log(nameElement.id)
+            menuPoints.push(safeSplit(nameElement.id, "/", 1));
+        }
+    }
+
+    function pascalize(string) {
+        return string.replaceAll("-", " ").replace(/(\w)(\w*)/g,
+            (g0, g1, g2) => g1.toUpperCase() + g2.toLowerCase());
+    }
+
+    function safeSplit(string, splitChart, fromIndexOfMatch) {
+        let splitter = [];
+        let split = string.split(splitChart);
+        console.log(`Before safe split: `, split)
+        for (let i = 0; i < split.length; i++) {
+            if (i >= fromIndexOfMatch) {
+                splitter.push(split[i])
+            }
+        }
+        return splitter;
+    }
+
+    function buildChildParentConnection(splitter) {
+        let connections = []
+        let actualElement = splitter[0];
+        let children;
+        if (splitter[1])
+            children = [...buildChildParentConnection(splitter.filter((_, index) => index !== 0))];
+
+        let decadeElement = children
+            ? {
+                name: actualElement,
+                children: children,
+            }
+            : {
+                name: actualElement,
+            };
+
+        if (!splitter[1])
+            decadeElement = children
+                ? {
+                    name: actualElement,
+                    children: children,
+                    IMSpecial: !splitter[1]
+                }
+                : {
+                    name: actualElement,
+                    IMSpecial: !splitter[1]
+                };
+
+        connections.push(decadeElement);
+        return connections;
+    }
+
+
+    function buildChildParentConnections(splitters) {
+        console.log("Input splitters", splitters)
+        let connections = [];
+        for (const splitter of splitters) {
+            let _ = buildChildParentConnection(splitter)
+            connections.push(_[0])
+        }
+        console.log("Connections inside build method", connections)
+        return connections
+    }
+
+    let groupBy = function (xs, key) {
+        return xs.reduce(function (rv, x) {
+            (rv[x[key]] = rv[x[key]] || []).push(x);
+            return rv;
+        }, {});
+    };
+
+    function orderGrouping(group, groupper, sortProperty) {
+        console.log("1. Groups without grouping :", group, "Grouping this with", groupper)
+        let withOutUndefined = group.filter(v => v !== undefined)
+        let groupBier = groupBy(withOutUndefined, groupper)
+        console.log("2. GroupingBy was successful", groupBier)
+        let groups = [];
+        for (const groupElement in groupBier) {
+            let element = groupBier[groupElement];
+            console.log("3. Element from the group sorted by ", sortProperty, element.sort(function (x, y) {
+                return (x[sortProperty] === y[sortProperty]) ? 0 : x[sortProperty] ? -1 : 1;
+            }))
+            let elementMap = element.map(e => e.children);
+            console.log("4. Mapping out children property from element", elementMap);
+            let withOutUndefinedElementMap = elementMap.filter(map => map !== undefined);
+            console.log("5. Filter out undefined from inner maps", withOutUndefinedElementMap)
+            if (withOutUndefinedElementMap) {
+                let merged = [].concat.apply([], withOutUndefinedElementMap);
+                console.log("6. Flattened array for", merged)
+                element[0].children = [...orderGrouping(merged, groupper, sortProperty)]
+                console.log("7. Set element children collection.")
+            }
+            groups.push(element[0]);
+            console.log("8. Pushed element to final groups", element[0],)
+        }
+        console.log("9. Returning Groups", groups)
+        return groups;
+    }
+
+    function generateDropDown(groups, parent) {
+        let mainParent = document.getElementsByClassName("menuLinks")[0];
+        for (const group of groups) {
+            let thisGroup;
+            if (parent) {
+                console.log("There is parent", parent)
+                if (group.children.length > 0) {
+                    let elementsByClassNameElement = parent.getElementsByClassName("dd-ul-sub-menu")[0];
+                    if (elementsByClassNameElement) {
+                        console.log(elementsByClassNameElement)
+                        thisGroup = elementsByClassNameElement
+                    } else {
+                        thisGroup = document.createElement("ul");
+                        thisGroup.setAttribute("class", "dd-ul-sub-menu");
+                    }
+
+                    let li = document.createElement("li")
+                    li.setAttribute("class", "dd-li-sub-menu")
+                    li.setAttribute("id", parent.id + "/" + group.name)
+                    let a = document.createElement("a")
+
+                    if (group.IMSpecial) {
+                        console.log("IM special", group)
+                        a.setAttribute("href", parent.id + "/" + group.name)
+                    }
+
+                    a.innerText = pascalize(group.name);
+                    li.append(a)
+
+                    thisGroup.append(li);
+                    parent.append(thisGroup)
+                    if (parent.nodeName !== "UL")
+                        thisGroup = li
+                } else {
+                    let elementsByClassNameElement = parent.getElementsByClassName("dd-ul-sub-menu")[0];
+                    thisGroup = document.createElement("li");
+                    thisGroup.setAttribute("class", "dd-li-item")
+                    thisGroup.setAttribute("id", parent.id + "/" + group.name)
+                    let a = document.createElement("a")
+
+                    if (group.IMSpecial) {
+                        console.log("IM special", group)
+                        a.setAttribute("href", parent.id + "/" + group.name)
+                    }
+
+                    a.innerText = pascalize(group.name);
+                    thisGroup.append(a);
+                    // if (parent.className === "dd-sub-menu") {
+                    //     thisGroup.setAttribute("class", "dd-sub-item")
+                    // } else {
+                    //     thisGroup.setAttribute("class", "dd-item")
+                    // }
+                    if (elementsByClassNameElement)
+                        elementsByClassNameElement.append(thisGroup)
+                    else {
+                        let childs = document.createElement("ul")
+                        childs.setAttribute("class", "dd-ul-sub-menu")
+                        childs.append(thisGroup)
+                        parent.append(childs)
+                    }
+                }
+            } else {
+                console.log("There is no parent")
+                thisGroup = document.createElement("ul");
+                thisGroup.setAttribute("class", "dd-ul-main")
+                let li = document.createElement("li")
+                li.setAttribute("id", "/" + group.name)
+                li.setAttribute("class", "dd-li-main")
+                let a = document.createElement("a")
+
+                if (group.IMSpecial) {
+                    li.className = "menu-item " + li.className
+                    console.log("IM special", group)
+                    a.setAttribute("href", "/" + group.name)
+                }
+
+                a.innerText = pascalize(group.name);
+                li.append(a)
+                thisGroup.append(li);
+                mainParent.append(thisGroup)
+                thisGroup = li
+            }
+
+            if (group.children) {
+                console.log("There is childrens", group.children)
+                generateDropDown(group.children, thisGroup);
+            }
+        }
+    }
+
+    generateDropDown(orderGrouping(buildChildParentConnections(menuPoints), "name", "IMSpecial"));
+
+    for (const elementsByClassNameElement of document.getElementsByClassName("menu-item")) {
+        setActiveMenu(elementsByClassNameElement)
+    }
+
     function setActiveMenu(element) {
         let current_url = window.location.origin + window.location.pathname
         let nameElement = element.getElementsByTagName("a")[0];
-        if (nameElement.href === current_url) {
+        if (current_url.includes(nameElement.href)) {
             console.log(nameElement)
             console.log(nameElement.href)
             console.log(current_url)
-            nameElement.className = "border-bottom border-warning border-3 fw-bold"
+            nameElement.className = nameElement.className + " border-bottom border-warning border-3 fw-bold"
         }
     }
 </script>
@@ -31,6 +238,72 @@
 <style>
     .menu-item {
         margin-left: 1.5rem;
+    }
+
+    ul.dd-ul-sub-menu {
+        font-size: 14px;
+    }
+
+    ul.dd-ul-sub-menu > li a {
+        padding: 0.6rem !important;
+    }
+
+    .menuLinks ul {
+        list-style: none;
+        position: relative;
+        margin: 0;
+        padding: 0
+    }
+
+    .menuLinks ul {
+        display: block;
+        text-decoration: none;
+        text-align: center;
+        padding: 0 12px;
+        font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif
+    }
+
+    .menuLinks ul li {
+        position: relative;
+        margin: 0;
+        padding: 0
+    }
+
+    .menuLinks ul ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        padding: 0
+    }
+
+    .menuLinks ul ul li {
+        background-color: inherit;
+        width: 100%
+    }
+
+    .menuLinks ul ul li:hover > a {
+        background-color: gray;
+        border-radius: 0.17rem;
+    }
+
+    .menuLinks ul.dd-ul-sub-menu {
+        background-color: whitesmoke;
+        padding: 0.3rem !important;
+        border-radius: 0.3rem;
+    }
+
+    .menuLinks ul ul a {
+        display: block;
+        line-height: 120%;
+    }
+
+    .menuLinks ul ul ul {
+        top: 0;
+        right: 100%
+    }
+
+    .menuLinks ul li:hover > ul {
+        display: block
     }
 
     .menuLinks {
