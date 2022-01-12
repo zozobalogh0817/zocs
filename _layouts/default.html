@@ -9,12 +9,8 @@
 {% if page.options.archived %}
 {% include archiveMessage.html %}
 {% else %}
-{% if page.options.toc %}
-<body class="container me-0">
-{% endif %}
-{% else %}
-<body class="container">
-{% endif %}
+
+<body class="container {% if page.settings.toc %} me-0 {% endif %}">
 {% if site.settings.hasHeader %}
 <header class="masthead">
     <b class="masthead-title h4">
