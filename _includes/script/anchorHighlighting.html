@@ -1,0 +1,70 @@
+<script>
+    /* INFO */
+    // this is now enough for highlight what topic currently the user hitting but in the feature it would be nice to refactor
+    // this method
+    // Users would change their highlighting, or it changes with the basic (wiki-theme/themes) set up for this GitHub pages theme
+    //
+    // (wiki-theme/themes) are a lib with css styles what could be included based on the user choice
+    // user set a theme name in the _config.yaml
+    // inner_theme: dark -accessGithubRepo--> https://github.com/zozobalogh0817/wiki-theme/themes/blob/master/css/THEME_PLACEHOLDER.css
+    /* END INFO */
+
+    function changeHash() {
+        let currentUrlsHash = window.location.hash.replace("#", "");
+
+        // Getting TOC side nav on page
+        let onThisPageContent = document.getElementsByClassName("on-this-page")[0];
+        if (onThisPageContent) {
+            // Getting elements in TOC (all element in toc will be a and their href are set to #ANCHOR_PLACEHOLDER)
+            let aElementsInToc = onThisPageContent.getElementsByTagName("a");
+
+            for (let aElementInTocKey in aElementsInToc) {
+                let element = aElementsInToc[aElementInTocKey];
+
+                let currentElementHref = element.href;
+                if (currentElementHref) {
+                    // Getting the index of # in the href
+                    let elementHashIndex = currentElementHref.indexOf("#");
+                    // Select the anchor string from the href by substring from the indexOf(#) to the end of the string
+                    // then replace the # with nothing
+                    let anchor = currentElementHref
+                        .substring(elementHashIndex, currentElementHref.length)
+                        .replace("#", "");
+                    // Compare the current anchor with the now calculated one
+                    // If they equals
+                    let activeAnchorFlag = "active_anchor border-start border-warning border-3 fw-bold";
+                    let wasActiveAnchorFlag = "was_active_anchor";
+                    if (anchor === currentUrlsHash) {
+                        // Find out whether the anchor link's class includes "was_active_anchor" key word
+                        let isWereActive = element.className.includes(wasActiveAnchorFlag);
+                        if (isWereActive) {
+                            // if yes set the class name back (was_active_anchor) --to--> (active_anchor) flag
+                            // and setting also to Bootstrap h4 class
+                            element.className = element.className.replace(wasActiveAnchorFlag, activeAnchorFlag);
+                        }
+                        if (!isWereActive) {
+                            // if it were never active we set class attribute to (active_anchor h4)
+                            // this will highlight the current link as a h4 header without wrapping it around with <h4><h4>
+                            element.setAttribute("class", activeAnchorFlag)
+                        }
+                    }
+                    // If they not equals
+                    if (anchor !== currentUrlsHash) {
+                        // This basically a reset method where the anchor style resets
+                        // Find out the current tag includes a (active_anchor)
+                        // if no -> skip
+                        // if yes ->
+                        // replace the (active_anchor) -with-> (was_active_anchor)
+                        // and replace the (h4) -with-> ()
+                        let isIncludesActiveAnchor = element.className.includes("active_anchor")
+                        if (isIncludesActiveAnchor) {
+                            element.className = element.className.replace(activeAnchorFlag, wasActiveAnchorFlag)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    window.onhashchange = changeHash
+</script>
