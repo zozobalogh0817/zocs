@@ -43,27 +43,11 @@
                             // if yes set the class name back (was_active_anchor) --to--> (active_anchor) flag
                             // and setting also to Bootstrap h4 class
                             element.className = element.className.replace(wasActiveAnchorFlag, activeAnchorFlag);
-
-                            if (!timer)
-                                timer = setTimeout(() => {
-                                    window.addEventListener('scroll', onScroll);
-                                    console.log("Scroll event now set back")
-                                }, 4000)
-                            else
-                                clearTimeout(timer)
                         }
                         if (!isWereActive) {
                             // if it were never active we set class attribute to (active_anchor h4)
                             // this will highlight the current link as a h4 header without wrapping it around with <h4><h4>
                             element.setAttribute("class", activeAnchorFlag)
-
-                            if (!timer)
-                                timer = setTimeout(() => {
-                                    window.addEventListener('scroll', onScroll);
-                                    console.log("Scroll event now set back")
-                                }, 4000)
-                            else
-                                clearTimeout(timer)
                         }
                     }
                     // If they not equals
@@ -100,9 +84,6 @@
         });
     }
 
-
-    setUpAnchors()
-
     function setUpAnchors() {
         // Getting TOC side nav on page
         let onThisPageContent = document.getElementsByClassName("on-this-page")[0];
@@ -111,13 +92,11 @@
             let aElementsInToc = onThisPageContent.getElementsByTagName("a");
             for (let aElementInTocKey in aElementsInToc) {
                 let element = aElementsInToc[aElementInTocKey];
-                element.onclick = () => {
-                    console.log("Remove on scroll event when anchor link is clicked")
-                    window.removeEventListener('scroll', onScroll);
-                }
             }
         }
     }
+
+    setUpAnchors()
 
     function scrollStop (callback, refresh = 66) {
 
