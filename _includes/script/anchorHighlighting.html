@@ -9,9 +9,10 @@
     // inner_theme: dark -accessGithubRepo--> https://github.com/zozobalogh0817/wiki-theme/themes/blob/master/css/THEME_PLACEHOLDER.css
     /* END INFO */
 
-    function changeHash() {
+    function onHashChange() {
         let activeAnchorFlag = "active_anchor border-start border-warning border-3 fw-bold";
         let wasActiveAnchorFlag = "was_active_anchor";
+        let timer = null;
 
         let currentUrlsHash = window.location.hash.replace("#", "");
 
@@ -43,17 +44,26 @@
                             // and setting also to Bootstrap h4 class
                             element.className = element.className.replace(wasActiveAnchorFlag, activeAnchorFlag);
 
-                            setTimeout(() => {
-                                console.log("Scroll event now set back")
-                            }, 2000)
+                            if (!timer)
+                                timer = setTimeout(() => {
+                                    window.addEventListener('scroll', onScroll);
+                                    console.log("Scroll event now set back")
+                                }, 4000)
+                            else
+                                clearTimeout(timer)
                         }
                         if (!isWereActive) {
                             // if it were never active we set class attribute to (active_anchor h4)
                             // this will highlight the current link as a h4 header without wrapping it around with <h4><h4>
                             element.setAttribute("class", activeAnchorFlag)
-                            setTimeout(() => {
-                                console.log("Scroll event now set back")
-                            }, 2000)
+
+                            if (!timer)
+                                timer = setTimeout(() => {
+                                    window.addEventListener('scroll', onScroll);
+                                    console.log("Scroll event now set back")
+                                }, 4000)
+                            else
+                                clearTimeout(timer)
                         }
                     }
                     // If they not equals
@@ -74,32 +84,27 @@
         }
     }
 
-    const handleScroll = () => {
+    function onScroll() {
+        clearTimeout();
         let header = $(".inner-container").find(":header");
         header.each(function (index) {
             if ($(this).offset().top < window.scrollY + 10
                 && $(this).offset().top +
-                $(this).height() > window.scrollY + 10) {
+                $(this).height() > window.scrollY + 10
+            ) {
                 let hash = $(this).attr('id');
                 if (hash) {
                     window.location.hash = hash;
                 }
             }
         });
-    };
-
-    window.onhashchange = changeHash
-
-    window.onload = () => {
-        if (window.location.hash !== "" || null) {
-            changeHash();
-            anchors.add();
-        }
     }
 
-    setUpAnchorLinks()
+    window.addEventListener('scroll', onScroll);
 
-    function setUpAnchorLinks() {
+    setUpAnchors()
+
+    function setUpAnchors() {
         // Getting TOC side nav on page
         let onThisPageContent = document.getElementsByClassName("on-this-page")[0];
         if (onThisPageContent) {
@@ -109,9 +114,17 @@
                 let element = aElementsInToc[aElementInTocKey];
                 element.onclick = () => {
                     console.log("Remove on scroll event when anchor link is clicked")
-                    window.removeEventListener('scroll', handleScroll);
+                    window.removeEventListener('scroll', onScroll);
                 }
             }
         }
+    }
+
+    window.onhashchange = onHashChange
+    window.onload = () => {
+        if (window.location.hash) {
+            onHashChange();
+        }
+        anchors.add();
     }
 </script>
