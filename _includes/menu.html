@@ -13,6 +13,9 @@
         let current_url = window.location.origin + window.location.pathname
         let nameElement = element.getElementsByTagName("a")[0];
         if (nameElement.href === current_url) {
+            console.log(nameElement)
+            console.log(nameElement.href)
+            console.log(current_url)
             element.className = "border-bottom border-warning border-3 fw-bold"
         }
     }
