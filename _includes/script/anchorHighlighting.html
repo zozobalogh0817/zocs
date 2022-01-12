@@ -42,11 +42,20 @@
                             // if yes set the class name back (was_active_anchor) --to--> (active_anchor) flag
                             // and setting also to Bootstrap h4 class
                             element.className = element.className.replace(wasActiveAnchorFlag, activeAnchorFlag);
+
+                            setTimeout(() => {
+                                window.addEventListener('scroll', handleScroll);
+                                console.log("Scroll event now set back")
+                            }, 2000)
                         }
                         if (!isWereActive) {
                             // if it were never active we set class attribute to (active_anchor h4)
                             // this will highlight the current link as a h4 header without wrapping it around with <h4><h4>
                             element.setAttribute("class", activeAnchorFlag)
+                            setTimeout(() => {
+                                window.addEventListener('scroll', handleScroll);
+                                console.log("Scroll event now set back")
+                            }, 2000)
                         }
                     }
                     // If they not equals
@@ -67,11 +76,49 @@
         }
     }
 
+    const handleScroll = () => {
+        let header = $(".inner-container").find(":header");
+        header.each(function (index) {
+            if ($(this).offset().top < window.scrollY + 10
+                && $(this).offset().top +
+                $(this).height() > window.scrollY + 10
+            ) {
+                let hash = $(this).attr('id');
+                if (hash) {
+                    window.location.hash = hash;
+                }
+            }
+        });
+    };
+
+    window.onhashchange = changeHash
+    window.addEventListener('scroll', handleScroll);
+
     window.onload = () => {
         if (window.location.hash !== "" || null) {
             changeHash();
+            setUpAnchorLinks()
             anchors.add();
         }
     }
-    window.onhashchange = changeHash
+
+
+    function setUpAnchorLinks() {
+        // Getting TOC side nav on page
+        let onThisPageContent = document.getElementsByClassName("on-this-page")[0];
+        if (onThisPageContent) {
+            console.log("This page has toc")
+            // Getting elements in TOC (all element in toc will be a and their href are set to #ANCHOR_PLACEHOLDER)
+            let aElementsInToc = onThisPageContent.getElementsByTagName("a");
+            for (let aElementInTocKey in aElementsInToc) {
+                console.log("A link anchor")
+                let element = aElementsInToc[aElementInTocKey];
+                element.onclick = () => {
+                    console.log("Remove on scroll event when anchor link is clicked")
+                    window.removeEventListener('scroll', handleScroll);
+                }
+                console.log("A link anchor set onClick")
+            }
+        }
+    }
 </script>
