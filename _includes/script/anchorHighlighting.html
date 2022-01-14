@@ -69,7 +69,6 @@
     }
 
     function onScroll() {
-        clearTimeout();
         let header = $(".inner-container").find(":header");
         header.each(function (index) {
             if ($(this).offset().top < window.scrollY + 10
@@ -92,13 +91,18 @@
             let aElementsInToc = onThisPageContent.getElementsByTagName("a");
             for (let aElementInTocKey in aElementsInToc) {
                 let element = aElementsInToc[aElementInTocKey];
+                // disable onscroll event while the user are scrolling.
+                // this reduces the glitches or more or less disables them
+                element.onclick = () => {
+                    window.onscroll = () => {
+                        console.log("Disabled on scroll for a while")
+                    }
+                }
             }
         }
     }
 
-    setUpAnchors()
-
-    function scrollStop (callback, refresh = 66) {
+    function scrollStop(callback, refresh = 66) {
 
         // Make sure a valid callback was provided
         if (!callback || typeof callback !== 'function') return;
@@ -119,9 +123,17 @@
 
     }
 
-    scrollStop(() =>{
-        onScroll()
+    // When scroll stops set onscroll event to onScroll method
+    scrollStop(() => {
+        window.onscroll = onScroll
     })
+
+    // Set onscroll event to onScroll method on default
+    window.onscroll = onScroll;
+    // In setup anchors I'm setting up all the clickable item in the toc menu with an onclick event
+    // look method implementation for further information
+    setUpAnchors()
+
     window.onhashchange = onHashChange
     window.onload = () => {
         if (window.location.hash) {
