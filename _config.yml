@@ -26,10 +26,13 @@ settings: {
   contactUs: { ownerName: "Balogh Zoltán Sándor",supportEmail: "zoltan.balogh@avolantis.net" },
   # END #
 
+  # Built in themes
+  theme: { parent: light, child: green },
   # Developer Tools Section
   devTool: {
     key: cabata
   }
+
 }
 
 markdown: kramdown

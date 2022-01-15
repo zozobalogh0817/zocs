@@ -44,12 +44,12 @@
     }
 
     body {
-        color: #515151;
-        background-color: #fff;
+        color: var(--body-color);
+        background-color: var(--body-bg-color);
     }
 
     a, a:hover, a:focus {
-        color: #268bd2;
+        color: var(--a-color);
         text-decoration: none !important;
     }
 
@@ -61,7 +61,7 @@
         margin-bottom: 0.5rem;
         font-weight: bold;
         line-height: 1.25;
-        color: #313131;
+        color: var(--header-color);
         text-rendering: optimizeLegibility;
     }
 
@@ -90,7 +90,7 @@
     }
 
     strong {
-        color: #303030;
+        color: var(--strong-color);
     }
 
     ul, ol, dl {
@@ -122,7 +122,7 @@
         font-size: 0.8rem !important;
         border-radius: 0.3rem;
         line-height: 1.4;
-        background-color: #f9f9f9;
+        background-color: var(--pre-background-color);
     }
 
     pre code {
@@ -135,7 +135,7 @@
     blockquote {
         padding: 0.5rem 1rem;
         margin: 0.8rem 0;
-        color: #7a7a7a;
+        color: var(--blockquote-color);
         border-left: 0.25rem solid #e5e5e5;
     }
 
@@ -153,13 +153,13 @@
     table {
         margin-bottom: 1rem;
         width: 100%;
-        border: 1px solid #e5e5e5;
+        border: 1px solid var(--table-border-color);
         border-collapse: collapse;
     }
 
     table td, table th {
         padding: 0.25rem 0.5rem;
-        border: 1px solid #e5e5e5;
+        border: 1px solid var(--table-border-td-th-color);
     }
 
     table tr:nth-child(odd) td, table tr:nth-child(odd) th {
@@ -181,7 +181,7 @@
 
     /* Responsive columns layout */
     .icon .outbound {
-        color: #aaa;
+        color: var(--icon-color);
         display: inline-block;
         vertical-align: middle;
         position: relative;
@@ -190,7 +190,7 @@
 
     .page-edit {
         padding-top: 12rem;
-        color: #4e6e8e;
+        color: var(--page-edit-color);
     }
 
     .page-edit .edit-link {
@@ -199,8 +199,8 @@
     }
 
     .masthead {
-        border-bottom: 1px solid #eaecef;
-        background-color: #fff;
+        border-bottom: 4px solid var(--masthead-border-bottom-color);
+        background-color: var(--masthead-background-color);
         line-height: 2.2rem;
         position: fixed;
         width: 100%;
@@ -213,15 +213,15 @@
         margin-top: 0;
         margin-bottom: 0;
         padding-left: 1rem;
-        color: #505050;
+        color: var(--masthead-title-a-color);
     }
 
     .masthead .masthead-title a {
-        color: #505050;
+        color: var(--masthead-title-a-color);
     }
 
     .masthead .masthead-title small {
-        color: #c0c0c0;
+        color: var(--masthead-title-small-color);
         font-size: 75%;
         font-weight: 400;
         letter-spacing: 0;
