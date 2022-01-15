@@ -128,8 +128,6 @@
         window.onscroll = onScroll
     })
 
-    // Set onscroll event to onScroll method on default
-    window.onscroll = onScroll;
     // In setup anchors I'm setting up all the clickable item in the toc menu with an onclick event
     // look method implementation for further information
     setUpAnchors()
@@ -138,7 +136,12 @@
     window.onload = () => {
         if (window.location.hash) {
             onHashChange();
+            window.onscroll = () => {
+                console.log("Disabled on scroll for a while")
+            }
         }
+        // Set onscroll event to onScroll method on default
+        window.onscroll = onScroll;
         setUpAnchors();
         anchors.add();
     }
