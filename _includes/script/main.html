@@ -1,8 +1,13 @@
 <!--
     LOCAL STYLE SHEETS
     -->
+
 {% include style/themes/default.html %}
 {% include style/packages/scrollbarStyle.html %}
+
+{% if site.style %}
+{% include style/themes/customTheme.html
+{% endif %}
 
 <!--
 SCRIPT CDNs
