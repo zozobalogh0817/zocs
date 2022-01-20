@@ -9,5 +9,9 @@ layout: default
 
   {% include script/embedGithubVideo.html %}
   {% include script/embedYoutubeVideo.html %}
+
+  {% if page.options.contributors %}
+  {% include contributors.html %}
+  {% endif %}
 </article>
 

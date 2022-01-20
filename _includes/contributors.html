@@ -1,0 +1,49 @@
+<script>
+    const xpath = "//*[text()='[CONTRIBUTORS]']";
+    let matchingElement = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+    matchingElement.textContent = "";
+    matchingElement.setAttribute("class", "contributors")
+    fetch('https://api.github.com/repos/{{ site.github.repository_nwo }}/contributors')
+        .then((x) => {
+            console.log(x);
+            return x;
+        })
+        .then(response => response.json())
+        .then((a) => {
+            for (const aElement of a) {
+                let contributorContainerDiv = document.createElement("a")
+                contributorContainerDiv.href = aElement.html_url
+                contributorContainerDiv.setAttribute("class", "contributorProfile")
+                let h3 = document.createElement("b")
+                h3.innerText = aElement.login;
+                let picture = document.createElement("img")
+                picture.src = aElement.avatar_url;
+                contributorContainerDiv.append(h3)
+                contributorContainerDiv.append(picture)
+                matchingElement.appendChild(contributorContainerDiv)
+            }
+        });
+</script>
+
+<style>
+    .contributors {
+        width: 100%;
+        display: flex;
+        overflow-x: auto;
+    }
+
+    .contributorProfile {
+        width: fit-content;
+        padding-right: 2rem;
+    }
+
+    .contributorProfile > b {
+        font-size: 12px;
+    }
+
+    .contributorProfile > img {
+        margin: 0 !important;
+        width: 3rem;
+        height: 3rem;
+    }
+</style>
