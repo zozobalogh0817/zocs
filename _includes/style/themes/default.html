@@ -1,3 +1,31 @@
+{% if page.options.toc %}
+<style>
+    .inner-container {
+        scroll-behavior: smooth;
+        position: absolute;
+        top: 45px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 2rem 2.5rem 2rem 18rem;
+    }
+</style>
+
+{% else %}
+
+<style>
+    .inner-container {
+        scroll-behavior: smooth;
+        position: absolute;
+        top: 45px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 2rem 2rem 2rem 2rem;
+    }
+</style>
+{% endif %}
+
 <style>
     .page-title {
         padding-top: 2rem !important;
@@ -139,19 +167,9 @@
         margin-right: auto;
     }
 
-    .inner-container {
-        scroll-behavior: smooth;
-        position: absolute;
-        top: 45px;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        padding: 2rem 2.5rem 2rem 18rem;
-    }
-
     .page h1, h2, h3, h4, h5, h6 {
         margin-top: -2.6rem !important;
-        padding-top: 6.6rem !important;
+        padding-top: 6.6rem;
     }
 
     /* Responsive columns layout */
