@@ -12,12 +12,16 @@
 
     let innerContainerPs = innerContainer.getElementsByTagName("p");
     for (let p of innerContainerPs) {
-        let match = p.innerText.match(/\[YOUTUBE\((.*)\)]/g)
+        let expressionGlobal = /\[YOUTUBE\((.*)\)]/g;
+        let expression = /\[YOUTUBE\((.*)\)]/;
+        let match = p.innerText.match(expressionGlobal)
+
         if (match) {
-            p.setAttribute("class", "youtube-embed-video")
             p.innerText = "";
+            let mapper = match.map(dx => dx.match(expression))
+            p.setAttribute("class", "youtube-embed-video")
             let iframe = document.createElement("iframe")
-            iframe.src = "https://www.youtube.com/embed/" + getVideoIdFromYoutubeLink(match[1])
+            iframe.src = "https://www.youtube.com/embed/" + getVideoIdFromYoutubeLink(mapper[0][1])
             iframe.allowFullscreen = true
             p.append(iframe)
         }
