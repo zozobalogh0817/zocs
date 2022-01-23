@@ -100,18 +100,24 @@
 </style>
 
 <script>
-    function switchTheme() {
+    if(window.localStorage.getItem("dark-theme") === "active"){
+        switchTheme();
+    }
+
+    function switchTheme(){
         let element = document.getElementById("dark-theme-style")
-        if (element.className === "disabled") {
+        if(element.className === "disabled"){
             document.getElementById("dark-theme-icon").hidden = true
             document.getElementById("light-theme-icon").hidden = false
             element.setAttribute("media", "")
             element.setAttribute("class", "active")
+            window.localStorage.setItem("dark-theme", "active")
         } else if (element.className === "active") {
             document.getElementById("light-theme-icon").hidden = true
             document.getElementById("dark-theme-icon").hidden = false
             element.setAttribute("media", "max-width: 1px")
             element.setAttribute("class", "disabled")
+            window.localStorage.setItem("dark-theme", "disabled")
         }
     }
 </script>
