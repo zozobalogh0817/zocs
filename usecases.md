@@ -218,6 +218,13 @@ You can also use raw HTML in your Markdown, and it'll mostly work pretty well. H
   <dd>Does *not* work **very** well. Use HTML <em>tags</em>.</dd>
 </dl>
 
+## Tables
+### Markdown table
+| Syntax      | Description |
+| ----------- | ----------- |
+| Header      | Title       |
+| Paragraph   | Text        |
+### HTML table
 <table>
   <tr>
     <th></th>
