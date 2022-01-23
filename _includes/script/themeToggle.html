@@ -11,6 +11,10 @@
 </style>
 
 <style id="dark-theme-style" class="disabled" media="max-width: 1px">
+    table tr {
+        background-color: white;
+    }
+
     .light {
         color: #ffffff
     }
@@ -100,13 +104,13 @@
 </style>
 
 <script>
-    if(window.localStorage.getItem("dark-theme") === "active"){
+    if (window.localStorage.getItem("dark-theme") === "active") {
         switchTheme();
     }
 
-    function switchTheme(){
+    function switchTheme() {
         let element = document.getElementById("dark-theme-style")
-        if(element.className === "disabled"){
+        if (element.className === "disabled") {
             document.getElementById("dark-theme-icon").hidden = true
             document.getElementById("light-theme-icon").hidden = false
             element.setAttribute("media", "")
